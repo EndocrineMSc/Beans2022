@@ -15,7 +15,7 @@ public class ObjectMovement : MonoBehaviour
     #region Private Functions
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
