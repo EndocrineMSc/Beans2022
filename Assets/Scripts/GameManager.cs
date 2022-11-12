@@ -108,6 +108,18 @@ namespace Beans2022
 			}
 		}
 
+		public IEnumerator SlowDown()
+		{
+			float originalSpeed = Speed;
+			float step = (Speed + 3f) / 200;
+			Speed = -3f;
+			while (Speed > originalSpeed)
+			{
+				Speed += step;
+				yield return new WaitForSeconds(0.01f);
+			}
+		}
+
 		#endregion
 
 		#region Private Functions
