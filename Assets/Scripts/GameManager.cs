@@ -49,7 +49,6 @@ namespace Beans2022
 			set { _sleepTimer = value; }
 		}
 
-
 		#endregion
 
 		#region Public Functions
