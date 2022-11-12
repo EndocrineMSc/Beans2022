@@ -80,7 +80,8 @@ namespace Beans2022
 					break;
 
 				case GameState.GameStarting:
-					break;
+                    GetComponent<CameraManager>().gameObject.SetActive(true);
+                    break;
 
 				case GameState.GameLoop:
 					break;
