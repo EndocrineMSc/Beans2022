@@ -38,8 +38,6 @@ public class SleepManager : MonoBehaviour
         {
             GameManager.Instance.SwitchState(GameState.GameOver);
         }
-
-        timerText.text = _sleepTimer.ToString();
     }
     #endregion
 
