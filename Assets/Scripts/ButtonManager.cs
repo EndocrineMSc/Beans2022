@@ -34,6 +34,11 @@ namespace Beans2022.Buttons
         {
             GameManager.Instance.SwitchState(GameState.Credits);
         }
+
+        public void OpenMainMenu()
+        {
+            GameManager.Instance.SwitchState(GameState.MainMenu);
+        }
         #endregion
 
     }
