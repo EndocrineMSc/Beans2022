@@ -11,6 +11,9 @@ public class PickUpSpawner : MonoBehaviour
 
     [SerializeField] private GameObject boosterPickUp1;
     [SerializeField] private GameObject boosterPickUp2;
+    [SerializeField] private GameObject boosterPickUp3;
+    [SerializeField] private GameObject boosterPickUp4;
+
 
     private List<GameObject> PickUps = new List<GameObject>();
 
@@ -29,10 +32,9 @@ public class PickUpSpawner : MonoBehaviour
     {
         PickUps.Add(boosterPickUp1);
         PickUps.Add(boosterPickUp2);
+        PickUps.Add(boosterPickUp3);
+        PickUps.Add(boosterPickUp4);
     }
-    
-        
-    
 
     private void Update()
     {
@@ -43,7 +45,7 @@ public class PickUpSpawner : MonoBehaviour
 
         if (spawnReady)
         {
-            randomPickUpIndex = Random.Range(0, 2);
+            randomPickUpIndex = Random.Range(0, 4);
             Debug.Log(randomPickUpIndex);
 
             GameObject temp = PickUps[randomPickUpIndex];

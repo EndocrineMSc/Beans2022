@@ -61,7 +61,7 @@ MonoBehaviour:
   _highscoresEnd: {fileID: 0}
   _gameOver: {fileID: 0}
   _gameSpeed: -10
-  _sleepTimer: 50
+  _sleepTimer: 300
 --- !u!114 &2467150054109518223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d3facef0d38e4b8356b3d23781a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boosterPickUp1: {fileID: 0}
+  boosterPickUp1: {fileID: 793086385903985949, guid: 5e719b1e45f5eed439220b15ad4b2b66, type: 3}
+  boosterPickUp2: {fileID: 1196165156630311472, guid: 9252c9b3d92617f4f915be6b68af66a2, type: 3}
+  boosterPickUp3: {fileID: 864038049990607431, guid: e96f262d44da3844c9034f789ef1360d, type: 3}
+  boosterPickUp4: {fileID: 1482834787919390262, guid: e9e2e4570e4630440a6d03064400e689, type: 3}
   spawnCooldownStart: 10
 --- !u!82 &2455877538352669217
 AudioSource:
@@ -129,10 +132,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 27c172176dedfb440b6d2ed795009105, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -228,7 +231,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -324,7 +327,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

@@ -30,7 +30,7 @@ namespace Beans2022.Audio
 
         #region Properties
 
-        private float _musicVolume = 1;
+        private float _musicVolume = 0.3f;
 
         public float Volume
         {
@@ -167,7 +167,7 @@ namespace Beans2022.Audio
         private IEnumerator RandomVoiceLineGenerator()
         {
             waiting = true;
-            float voiceLineWaitTime = Random.Range(5,20);
+            float voiceLineWaitTime = Random.Range(5,10);
             int voiceLineIndex = Random.Range(0, randomVoiceLines.Length);
 
             AudioSource voiceLine = randomVoiceLines[voiceLineIndex];
