@@ -13,6 +13,7 @@ public class PickUpSpawner : MonoBehaviour
     [SerializeField] private GameObject boosterPickUp2;
     [SerializeField] private GameObject boosterPickUp3;
     [SerializeField] private GameObject boosterPickUp4;
+    [SerializeField] private GameObject boosterPickUp5;
 
 
     private List<GameObject> PickUps = new List<GameObject>();
@@ -34,6 +35,7 @@ public class PickUpSpawner : MonoBehaviour
         PickUps.Add(boosterPickUp2);
         PickUps.Add(boosterPickUp3);
         PickUps.Add(boosterPickUp4);
+        PickUps.Add(boosterPickUp5);
     }
 
     private void Update()
