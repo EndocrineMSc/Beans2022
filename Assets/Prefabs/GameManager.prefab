@@ -457,4 +457,4 @@ MonoBehaviour:
   stone: {fileID: 1623588385524204468, guid: 43cbe07c52e61ae469b9c74126e2cc6f, type: 3}
   grave: {fileID: 6404448667490096433, guid: 9cc7edbd6cc3ea244ae8354900dc2870, type: 3}
   trashBin: {fileID: 1441315904335588069, guid: 89bb3f45ea436404f8b58ff2ad83ba44, type: 3}
-  spawnCooldownStart: 0
+  spawnCooldownStart: 10
