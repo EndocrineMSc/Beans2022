@@ -36,42 +36,37 @@ public class Background : MonoBehaviour
 
         if (_backgroundPosition.x <= xSpawnBoundary && !hasInstantiated)
         {
-            GameObject temp;
+            randomBackground = Random.Range(1, 6);
+            Debug.Log("Random Background: " + randomBackground);
             switch (randomBackground)
             {               
                 case 1:
-                    temp = Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
-                    temp.transform.eulerAngles= new Vector3(10,0,0);
-                    Debug.Log(temp.transform.position);
+                    Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.Euler(10, 0, 0));
+
                     break;
 
                 case 2:
-                    temp = Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
-                    temp.transform.eulerAngles = new Vector3(10, 0, 0);
-                    Debug.Log(temp.transform.position);
+                    Instantiate(_background2, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.Euler(10, 0, 0));
+
                     break;
 
                 case 3:
-                    temp = Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
-                    temp.transform.eulerAngles = new Vector3(10, 0, 0);
-                    Debug.Log(temp.transform.position);
+                    Instantiate(_background3, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.Euler(10, 0, 0));
+
                     break;
 
                 case 4:
-                    temp = Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
-                    temp.transform.eulerAngles = new Vector3(10, 0, 0);
-                    Debug.Log(temp.transform.position);
+                    Instantiate(_background4, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.Euler(10, 0, 0));
+                    
                     break;
 
                 case 5:
-                    temp = Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
-                    temp.transform.eulerAngles = new Vector3(10, 0, 0);
-                    Debug.Log(temp.transform.position);
+                    Instantiate(_background5, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.Euler(10, 0, 0));
+                    
                     break;
 
             }
             
-
             hasInstantiated = true;
         } 
     }

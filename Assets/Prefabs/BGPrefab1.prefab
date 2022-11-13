@@ -129,10 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _background1: {fileID: 368083692151488718}
   _background2: {fileID: 8757973056270922801, guid: 64e586ad82ab3d84991c12b50ea38aac, type: 3}
-  _background3: {fileID: 368083692151488718}
-  _background4: {fileID: 8757973056270922801, guid: 64e586ad82ab3d84991c12b50ea38aac, type: 3}
-  _background5: {fileID: 368083692151488718}
+  _background3: {fileID: 4458325460793298225, guid: 95edf82af58719f40a190347a6b11efa, type: 3}
+  _background4: {fileID: 2912933254621539907, guid: 230592410b648b648a58d21241825996, type: 3}
+  _background5: {fileID: 1080750304766577759, guid: c9abf4b9efea0c0418798242b91b623b, type: 3}
   xBoundary: -50
-  xSpawnBoundary: -15
   ySpawnPosition: -3
   zSpawnPosition: 10.4
