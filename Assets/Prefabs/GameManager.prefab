@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6216956559517122510}
   - component: {fileID: 2656620878608079305}
   - component: {fileID: 755517646}
+  - component: {fileID: 2332787535889162039}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -57,8 +58,6 @@ MonoBehaviour:
   _credits: {fileID: 0}
   _settings: {fileID: 0}
   _pauseMenu: {fileID: 0}
-  _highscoresStart: {fileID: 0}
-  _highscoresEnd: {fileID: 0}
   _gameOver: {fileID: 0}
   _gameSpeed: -10
   _sleepTimer: 300
@@ -441,5 +440,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bc711d16a739843ae9fc8230099742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
   mainMenu: {fileID: 0}
+--- !u!114 &2332787535889162039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140738543171468124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ee3568de69edf4e907dd34f26e5877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parkBench: {fileID: 8076576587404809733, guid: 9b922fe28b4b33a449f256e1db3556d4, type: 3}
+  stone: {fileID: 1623588385524204468, guid: 43cbe07c52e61ae469b9c74126e2cc6f, type: 3}
+  grave: {fileID: 6404448667490096433, guid: 9cc7edbd6cc3ea244ae8354900dc2870, type: 3}
+  trashBin: {fileID: 1441315904335588069, guid: 89bb3f45ea436404f8b58ff2ad83ba44, type: 3}
+  spawnCooldownStart: 0

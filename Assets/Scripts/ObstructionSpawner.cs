@@ -47,6 +47,8 @@ public class ObstructionSpawner : MonoBehaviour
 
 
             GameObject temp = spawnList[randomObstructionIndex];
+
+            Debug.Log(temp.name);
             if (temp.name.Contains("parkBench"))
             {
                 Instantiate(temp, new Vector3(100, -3, 0), Quaternion.Euler(0,180,0));

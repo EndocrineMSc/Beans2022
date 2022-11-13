@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5216716314711681388}
   - component: {fileID: 5067344658370584465}
   m_Layer: 0
-  m_Name: Grab
+  m_Name: grave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
