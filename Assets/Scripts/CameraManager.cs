@@ -1,15 +1,20 @@
 using Beans2022;
 using Cinemachine;
+using Cinemachine.PostFX;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+
 public class CameraManager : MonoBehaviour
 {
 
     [SerializeField] CinemachineRecomposer cineRecomp;
-    [SerializeField] CinemachineStoryboard cineSB;
-    public float blinkSpeed;
-    public float closedTime;
+    [SerializeField] CinemachinePostProcessing cinePost;
+    public float blinkTime;
+    public float blinkValue;
+
+    int steps = 100;
 
     bool isBlinking = false;
 
@@ -26,58 +31,34 @@ public class CameraManager : MonoBehaviour
         cineRecomp.m_ZoomScale = 1 + (startSpeed - GameManager.Instance.Speed) * 0.1f;
         if(Input.GetKeyDown(KeyCode.B) && !isBlinking)
         {
-            Blink();
+            StartCoroutine(Blink());
         }
     }
-    void Blink()
+    IEnumerator Blink()
     {
+        PostProcessProfile profile = cinePost.m_Profile;
+        Vignette vign;
+        DepthOfField dof;
+        profile.TryGetSettings(out vign);
+        profile.TryGetSettings(out dof);
         isBlinking = true;
-        StartCoroutine(blinkIn());
+        float valueStep = blinkValue * 1f / steps * blinkTime / 2f;
+        float timeStep = (1f / steps) * (blinkTime / 3f);
+        for (int i = 0; i < steps; i++)
+        {
+            dof.focusDistance.Override(5f - i * 4f / steps);
+            vign.intensity.Override(vign.intensity + valueStep);
+            yield return new WaitForSeconds(timeStep);
+        }
+        yield return new WaitForSeconds(blinkTime / 3);
+        for (int i = 0; i < steps; i++)
+        {
+            dof.focusDistance.Override(1f + i * 4 / steps);
+            vign.intensity.Override(vign.intensity - valueStep);
+            yield return new WaitForSeconds(timeStep);
+        }
+        isBlinking = false;
+        vign.intensity.Override(0);
     }
 
-    IEnumerator blinkIn()
-    {
-        
-        while (cineSB.m_Alpha < 1)
-        {
-            cineSB.m_Alpha += 0.02f;
-            cineSB.m_Scale.y -= 0.01f;
-            yield return new WaitForSeconds(blinkSpeed * 0.02f);
-        }
-        StartCoroutine (waitBlinkClosing());
-    }
-    IEnumerator waitBlinkClosing()
-    {
-        int i = 0;
-        while (i < closedTime * 50)
-        {
-            i++;
-            cineSB.m_Scale.y -= 0.005f;
-            yield return new WaitForSeconds(0.01f);
-        }
-        StartCoroutine(waitBlinkOpen());
-    }
-    IEnumerator waitBlinkOpen()
-    {
-        int i = 0;
-        while (i < closedTime * 50)
-        {
-            i++;
-            cineSB.m_Scale.y += 0.005f;
-            yield return new WaitForSeconds(0.01f);
-        }
-        StartCoroutine(blinkOut());
-    }
-    IEnumerator blinkOut()
-    {
-        while (cineSB.m_Alpha > 0)
-        {
-            cineSB.m_Alpha -= 0.02f;
-            cineSB.m_Scale.y += 0.01f;
-            yield return new WaitForSeconds(blinkSpeed * 0.02f);
-        }
-        cineSB.m_Alpha = 0;
-        cineSB.m_Scale.y = 2.2f;
-        isBlinking = false;
-    }
 }
