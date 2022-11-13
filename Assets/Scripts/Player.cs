@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public float speed;
 
+    [SerializeField] Animator animator;
+
     [SerializeField] float jumpHeight;
     [SerializeField] float gravityScale;
     [SerializeField] float gravityScaleFalling;
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             isJumping = true;
+            
             jumpCancelled = false;
             if (isGrounded())
             {
@@ -62,11 +65,22 @@ public class Player : MonoBehaviour
             if (isJumping && Input.GetKeyUp(KeyCode.Space))
             {
                 jumpCancelled = true;
+                animator.SetBool("jumpCancelled", true);
             }
             if (jumpTime > buttonTime)
             {
                 isJumping = false;
             }
+        }
+        if (!isJumping && isGrounded())
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetBool("jumpCancelled", false);
+            animator.SetBool("isFalling", false);
+        }
+        if(rb.velocity.y < 0)
+        {
+            animator.SetBool("isFalling", true);
         }
 
 
@@ -74,6 +88,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
+        animator.SetBool("isJumping", true);
         float jumpForce = Mathf.Sqrt(jumpHeight * -2 * Physics.gravity.y * gravityScale);
         rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
     }
@@ -83,7 +98,6 @@ public class Player : MonoBehaviour
         Vector3 point = transform.position + Vector3.down * checkGroundedOffset;
         Vector3 size = new Vector3(transform.localScale.x, transform.localScale.y);
         bool grounded = false;
-
         foreach (Collider c in Physics.OverlapBox(point, size)){
             if(c.gameObject != this.gameObject)
             {
