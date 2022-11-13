@@ -894,6 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 770041429}
+  mainMenu: {fileID: 1184125211}
 --- !u!1 &770041429
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -973,6 +974,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770041429}
   m_CullTransparentMesh: 1
+--- !u!1 &1184125211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4283984629360442, guid: 306acfd618ba8614981405da5d5d9cdf, type: 3}
+  m_PrefabInstance: {fileID: 4283984999598344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &1184125214 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 4283984629360445, guid: 306acfd618ba8614981405da5d5d9cdf, type: 3}
+  m_PrefabInstance: {fileID: 4283984999598344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1276837067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6496979401357130282, guid: bed3aac66205d13439e487bb3cbaabac, type: 3}
@@ -2310,10 +2321,14 @@ PrefabInstance:
     - target: {fileID: 4478662918762043578, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
       propertyPath: _mainMenu
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1184125214}
     - target: {fileID: 4478662918762043578, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
       propertyPath: _gameSpeed
       value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478662918762043578, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+      propertyPath: _pauseMenu
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1220140845681616436, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
