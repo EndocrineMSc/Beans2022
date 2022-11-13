@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 1984027545186840771}
   - component: {fileID: 8032827210976675853}
   m_Layer: 8
-  m_Name: Parkbank
+  m_Name: parkBench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

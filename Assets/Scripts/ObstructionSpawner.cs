@@ -47,22 +47,23 @@ public class ObstructionSpawner : MonoBehaviour
 
 
             GameObject temp = spawnList[randomObstructionIndex];
+
+            Debug.Log(temp.name);
             if (temp.name.Contains("parkBench"))
             {
                 Instantiate(temp, new Vector3(100, -3, 0), Quaternion.Euler(0,180,0));
             }
             else if (temp.name.Contains("stone"))
             {
-
+                Instantiate(temp, new Vector3(100, -2.5f, 0), Quaternion.Euler(0, 90, 0));
             }
             else if (temp.name.Contains("grave"))
             {
-
+                Instantiate(temp, new Vector3(100, -3f, 0), Quaternion.Euler(-90, 0, 180));
             }
             else
             {
-                //trashbin
-
+                Instantiate(temp, new Vector3(100, -3f, 0), Quaternion.Euler(-90, 0, 0));
             }
 
             spawnCooldown = 0;
