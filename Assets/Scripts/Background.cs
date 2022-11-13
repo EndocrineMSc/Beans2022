@@ -15,8 +15,8 @@ public class Background : MonoBehaviour
     private Vector3 _backgroundPosition = new Vector3();
 
     [SerializeField] private float xBoundary;
-    [SerializeField] private float xSpawnPosition;
-    [SerializeField] private float xSpawnBoundary;
+    private float xSpawnPosition = 138.2f;
+    private float xSpawnBoundary = -53.3f;
     [SerializeField] private float ySpawnPosition;
     [SerializeField] private float zSpawnPosition;
     private int randomBackground;
@@ -30,35 +30,47 @@ public class Background : MonoBehaviour
         randomBackground = Random.Range(1, 6);
     }
 
-    // Update is called once per frame
     void Update()
     {
         _backgroundPosition = gameObject.transform.position;
 
         if (_backgroundPosition.x <= xSpawnBoundary && !hasInstantiated)
         {
+            GameObject temp;
             switch (randomBackground)
-            {
+            {               
                 case 1:
-                    Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
+                    temp = Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
+                    temp.transform.eulerAngles= new Vector3(10,0,0);
+                    Debug.Log(temp.transform.position);
                     break;
 
                 case 2:
-                    Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
+                    temp = Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
+                    temp.transform.eulerAngles = new Vector3(10, 0, 0);
+                    Debug.Log(temp.transform.position);
                     break;
 
                 case 3:
-                    Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
+                    temp = Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
+                    temp.transform.eulerAngles = new Vector3(10, 0, 0);
+                    Debug.Log(temp.transform.position);
                     break;
 
                 case 4:
-                    Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
+                    temp = Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
+                    temp.transform.eulerAngles = new Vector3(10, 0, 0);
+                    Debug.Log(temp.transform.position);
                     break;
 
                 case 5:
-                    Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
+                    temp = Instantiate(_background1, new Vector3(xSpawnPosition, ySpawnPosition, zSpawnPosition), Quaternion.identity);
+                    temp.transform.eulerAngles = new Vector3(10, 0, 0);
+                    Debug.Log(temp.transform.position);
                     break;
+
             }
+            
 
             hasInstantiated = true;
         } 
