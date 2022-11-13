@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2455877538352669217}
   - component: {fileID: 3598322541281995973}
   - component: {fileID: 6216956559517122510}
-  - component: {fileID: 755517645}
+  - component: {fileID: 2656620878608079305}
   - component: {fileID: 755517646}
   m_Layer: 0
   m_Name: GameManager
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d3facef0d38e4b8356b3d23781a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickUpObject: {fileID: 0}
+  boosterPickUp1: {fileID: 0}
   spawnCooldownStart: 10
 --- !u!82 &2455877538352669217
 AudioSource:
@@ -405,7 +405,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &755517645
+--- !u!114 &2656620878608079305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
