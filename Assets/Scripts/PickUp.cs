@@ -4,6 +4,7 @@ using UnityEngine;
 using Beans2022;
 using EnumCollection;
 using Unity.VisualScripting;
+using Beans2022.Audio;
 
 namespace Beans2022.PickUps
 {
@@ -48,10 +49,12 @@ namespace Beans2022.PickUps
             {
                 case PickUpType.Booster:
                     GameManager.Instance.SleepTimer += _timeBonus;
+                    GameManager.Instance.GetComponent<AudioManager>().PlayPickUpBooster();
                     break;
 
                 case PickUpType.Downer:
                     GameManager.Instance.SleepTimer -= _timeBonus;
+                    GameManager.Instance.GetComponent<AudioManager>().PlayPickUpDowner();
                     break;
             }
         }
