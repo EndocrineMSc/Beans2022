@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43957996, g: 0.47991818, b: 0.5247344, a: 1}
+  m_IndirectSpecularColor: {r: 0.43958056, g: 0.47991884, b: 0.5247352, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1439,6 +1439,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 755517641, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+      propertyPath: menuMusic
+      value: 
+      objectReference: {fileID: 8665120353665022225}
+    - target: {fileID: 755517641, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
       propertyPath: sfxObject
       value: 
       objectReference: {fileID: 404647627062254510, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
@@ -1578,6 +1582,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
+--- !u!82 &8665120353665022225 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5250076249764276568, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+  m_PrefabInstance: {fileID: 8665120353665022222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8757973055288038331
 PrefabInstance:
   m_ObjectHideFlags: 0
