@@ -16,8 +16,6 @@ namespace Beans2022
 		[SerializeField] private Canvas _credits;
 		[SerializeField] private Canvas _settings;
 		[SerializeField] private Canvas _pauseMenu;
-		[SerializeField] private Canvas _highscoresStart;
-		[SerializeField] private Canvas _highscoresEnd;
 		[SerializeField] private Canvas _gameOver;
 		
 
@@ -72,38 +70,64 @@ namespace Beans2022
 					Instance._mainMenu.gameObject.SetActive(true);
 					Instance._pauseMenu.gameObject.SetActive(false);
 					Instance._credits.gameObject.SetActive(false);
-					Instance._highscoresEnd.gameObject.SetActive(false);
-					Instance._highscoresStart.gameObject.SetActive(false);
 					Instance._gameOver.gameObject.SetActive(false);
 					Instance._settings.gameObject.SetActive(false);
-					break;
-
-				case GameState.Credits:
-					Instance._mainMenu.gameObject.SetActive(false);
-					Instance._credits.gameObject.SetActive(true);
-					break;
-
-				case GameState.Settings:
-					Instance._settings.gameObject.SetActive(true);
-					break;
-
-				case GameState.GameStarting:
-					Time.timeScale = 1;
-                    GetComponent<CameraManager>().gameObject.SetActive(true);
+					
                     break;
 
-				case GameState.GameLoop:
-					break;
+				case GameState.Credits:
+                    Instance._mainMenu.gameObject.SetActive(false);
+                    Instance._pauseMenu.gameObject.SetActive(false);
+                    Instance._credits.gameObject.SetActive(true);
+                    Instance._gameOver.gameObject.SetActive(false);
+                    Instance._settings.gameObject.SetActive(false);
+                    Time.timeScale = 0;
+                    break;
+
+				case GameState.Settings:
+                    Instance._mainMenu.gameObject.SetActive(false);
+                    Instance._pauseMenu.gameObject.SetActive(false);
+                    Instance._credits.gameObject.SetActive(false);
+                    Instance._gameOver.gameObject.SetActive(false);
+                    Instance._settings.gameObject.SetActive(true);
+                    Time.timeScale = 0;
+                    break;
+
+				case GameState.GameStarting:
+                    GetComponent<CameraManager>().gameObject.SetActive(true);
+					Instance._mainMenu.gameObject.SetActive(false);
+                    Instance._pauseMenu.gameObject.SetActive(false);
+                    Instance._credits.gameObject.SetActive(false);
+                    Instance._gameOver.gameObject.SetActive(false);
+                    Instance._settings.gameObject.SetActive(false);
+                    Time.timeScale = 1;
+                    break;
 
 				case GameState.GameOver:
-                    Time.timeScale = 0;
+                    Instance._mainMenu.gameObject.SetActive(false);
+                    Instance._pauseMenu.gameObject.SetActive(false);
+                    Instance._credits.gameObject.SetActive(false);
                     Instance._gameOver.gameObject.SetActive(true);
-					break;
+                    Instance._settings.gameObject.SetActive(false);
+                    Time.timeScale = 0;
+                    break;
 				case GameState.HighScoreEnd:
-					break;
+                    Instance._mainMenu.gameObject.SetActive(false);
+                    Instance._pauseMenu.gameObject.SetActive(false);
+                    Instance._credits.gameObject.SetActive(false);
+                    Instance._gameOver.gameObject.SetActive(false);
+                    Instance._settings.gameObject.SetActive(false);
+                    Time.timeScale = 0;
+                    break;
 
 				case GameState.Pause:
-					break;
+                    Instance._mainMenu.gameObject.SetActive(false);
+                    Instance._pauseMenu.gameObject.SetActive(true);
+                    Instance._credits.gameObject.SetActive(false);
+                    Instance._gameOver.gameObject.SetActive(false);
+                    Instance._settings.gameObject.SetActive(false);
+                    Time.timeScale = 0;
+                    break;
 
 				case GameState.Quit:
 
@@ -134,7 +158,12 @@ namespace Beans2022
 		private void Awake()
 		{
 			Instance = this;
+            Time.timeScale = 0;
 			DontDestroyOnLoad(gameObject);
+		}
+		private void Start()
+		{
+			SwitchState(GameState.MainMenu);
 		}
 
 		#endregion

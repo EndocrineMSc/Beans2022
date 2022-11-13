@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3760682895508639986}
   - component: {fileID: 755517641}
   - component: {fileID: 1531889119788801335}
-  - component: {fileID: 5858889301570729463}
   - component: {fileID: 2455877538352669217}
   - component: {fileID: 3598322541281995973}
   - component: {fileID: 6216956559517122510}
@@ -122,23 +121,6 @@ MonoBehaviour:
   boosterPickUp3: {fileID: 864038049990607431, guid: e96f262d44da3844c9034f789ef1360d, type: 3}
   boosterPickUp4: {fileID: 1482834787919390262, guid: e9e2e4570e4630440a6d03064400e689, type: 3}
   boosterPickUp5: {fileID: 0}
-  spawnCooldownStart: 10
---- !u!114 &5858889301570729463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140738543171468124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ee3568de69edf4e907dd34f26e5877, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parkBench: {fileID: 0}
-  stone: {fileID: 0}
-  grave: {fileID: 0}
-  trashBin: {fileID: 0}
   spawnCooldownStart: 10
 --- !u!82 &2455877538352669217
 AudioSource:
