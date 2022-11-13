@@ -50,7 +50,7 @@ public class PickUpSpawner : MonoBehaviour
 
             GameObject temp = PickUps[randomPickUpIndex];
 
-            Instantiate(temp, new Vector3(100, 1.75f, 0),Quaternion.Euler(-90,0,-180));
+            Instantiate(temp, new Vector3(100, Random.Range(1.3f,5.5f), 0),Quaternion.Euler(-90,0,-180));
 
             spawnCooldown = 0;
             spawnReady = false;
