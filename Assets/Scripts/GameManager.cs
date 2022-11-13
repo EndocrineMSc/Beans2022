@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+using Beans2022.Audio;
 
 namespace Beans2022
 {
@@ -41,7 +41,7 @@ namespace Beans2022
 			private set { _gameSpeed = value; }
 		}
 
-		private int _sleepTimer = 10000;
+		private int _sleepTimer = 20;
 
 		public int SleepTimer
 		{

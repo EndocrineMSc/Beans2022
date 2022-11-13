@@ -15,18 +15,22 @@ namespace Beans2022.Audio
         [SerializeField] private GameObject voiceLineObject;
         private AudioSource[] randomVoiceLines;
 
-        [SerializeField] private float _fadeSpeed = 0.1f;
-        [SerializeField] private float _volumeIncrement = 0.1f;
+        [SerializeField] private float _fadeSpeed = 0.5f;
+        [SerializeField] private float _volumeIncrement = 0.05f;
 
         private float sleepPercent; //how tired are we in percentage of the SpeedTimer
         private float maxTimer; //how much time does the player start with (get from Game Manager)
         private bool waiting; //for random Voice Line IEnumerator
 
+
+        private bool waitForFadeOut;
+        private bool waitForFadeIn;
+
         #endregion
 
         #region Properties
 
-        private float _musicVolume;
+        private float _musicVolume = 1;
 
         public float Volume
         {
@@ -53,8 +57,12 @@ namespace Beans2022.Audio
             audioSourceSFX.Play();
         }
 
-        #endregion
+        public void PlayMusic()
+        {
+            bgMusicOne.Play();
+        }
 
+        #endregion
 
         #region Private Functions
 
@@ -66,6 +74,7 @@ namespace Beans2022.Audio
 
             maxTimer = GameManager.Instance.SleepTimer;
             randomVoiceLines = voiceLineObject.GetComponents<AudioSource>();
+            bgMusicOne.Play();
         }
 
         private void Update()
@@ -74,38 +83,54 @@ namespace Beans2022.Audio
 
             if (sleepPercent > 0.7)
             {
-                if (bgMusicOne.volume < _musicVolume)
+                if (bgMusicOne.volume < _musicVolume && !waitForFadeIn)
                 {
-                    StartCoroutine(FadeInTrack(bgMusicOne));
+                    StartCoroutine(FadeInTrack(bgMusicOne, _musicVolume));
                 }
 
                 if (bgMusicTwo.volume >= _musicVolume)
                 {
-                    StartCoroutine(FadeOutTrack(bgMusicTwo));
+                    StartCoroutine(FadeOutTrack(bgMusicTwo, 0));
                 }
             }
-            else if (sleepPercent < 0.7 && sleepPercent > 0.3)
+            else if (sleepPercent < 0.7 && sleepPercent > 0.3 && !waitForFadeOut)
             {
-                if (bgMusicThree.volume >= _musicVolume)
+                if (bgMusicOne.volume > _musicVolume *0.7f)
                 {
-                    StartCoroutine(FadeOutTrack(bgMusicThree));
+                    float fadeVolume = _musicVolume * 0.7f;
+                    Debug.Log("FadeVolume Track 1: " + fadeVolume);
+                    StartCoroutine(FadeOutTrack(bgMusicOne, fadeVolume));
+                    Debug.Log("Track 1 after fade: " + bgMusicOne.volume);
                 }
 
-                if (bgMusicTwo.volume < _musicVolume)
+                
+                if (bgMusicOne.volume < _musicVolume * 0.7f && !waitForFadeIn)
                 {
-                    StartCoroutine(FadeInTrack(bgMusicTwo));
+                    float fadeVolume = _musicVolume * 0.7f;
+                    StartCoroutine(FadeInTrack(bgMusicOne, fadeVolume));
+                }
+
+                if (bgMusicThree.volume >= _musicVolume && !waitForFadeOut)
+                {
+                    StartCoroutine(FadeOutTrack(bgMusicThree, 0));
+                }
+
+                if (bgMusicTwo.volume < _musicVolume && !waitForFadeIn)
+                {
+                    StartCoroutine(FadeInTrack(bgMusicTwo, _musicVolume));
                 }  
             }
             else if (sleepPercent < 0.3)
             {
-                if (bgMusicTwo.volume >= _musicVolume)
+                if (bgMusicOne.volume >= _musicVolume * 0.5 && !waitForFadeOut)
                 {
-                    StartCoroutine(FadeOutTrack(bgMusicTwo));
+                    float fadeVolume = _musicVolume * 0.5f;
+                    StartCoroutine(FadeOutTrack(bgMusicOne, fadeVolume));
                 }
 
-                if (bgMusicThree.volume < _musicVolume)
+                if (bgMusicThree.volume < _musicVolume && !waitForFadeIn)
                 {
-                    StartCoroutine(FadeInTrack(bgMusicThree));
+                    StartCoroutine(FadeInTrack(bgMusicThree, _musicVolume));
                 }
             }
 
@@ -119,26 +144,29 @@ namespace Beans2022.Audio
 
         #region IEnumerators
 
-        private IEnumerator FadeInTrack(AudioSource audioSource)
+        private IEnumerator FadeInTrack(AudioSource audioSource, float fadeVolume)
         {
-            audioSource.volume = 0;
-
-            while (audioSourceMusic.volume < _musicVolume)
+            waitForFadeIn = true;
+            while (audioSource.volume < fadeVolume)
             {
                 yield return new WaitForSeconds(_fadeSpeed);
                 audioSource.volume += _volumeIncrement;  
             }
+            waitForFadeIn = false;
         }
 
-        private IEnumerator FadeOutTrack(AudioSource audioSource)
+        private IEnumerator FadeOutTrack(AudioSource audioSource, float fadeVolume)
         {
-            audioSource.volume = _musicVolume;
-
-            while (audioSource.volume >= _musicVolume)
+            waitForFadeOut = true;
+            int i = 1;
+            while (audioSource.volume >= fadeVolume)
             {
                 yield return new WaitForSeconds(_fadeSpeed);
                 audioSource.volume -= _volumeIncrement;
+                Debug.Log("Durchlauf i: " + i + "Volume: " + audioSource.volume);
+                i++;
             }
+            waitForFadeOut= false;
         }
 
         private IEnumerator RandomVoiceLineGenerator()
