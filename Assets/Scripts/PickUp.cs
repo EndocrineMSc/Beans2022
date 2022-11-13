@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Beans2022;
 using EnumCollection;
+using Unity.VisualScripting;
 
 namespace Beans2022.PickUps
 {
@@ -13,9 +14,12 @@ namespace Beans2022.PickUps
 
         [SerializeField] private int _timeBonus;
         [SerializeField] private PickUpType _type;
+        private float hoverSpeed = 15f;
         private Rigidbody _rigidbody;
-        private float _yRotation;
-        private float _smooth = 5;
+        private float _yPositionStart;
+        private float upperBorder;
+        private float lowerBorder;
+        private bool goUp;
 
         #endregion
 
@@ -23,6 +27,9 @@ namespace Beans2022.PickUps
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _yPositionStart = _rigidbody.transform.position.y;
+            upperBorder = _yPositionStart + 0.5f;
+            lowerBorder = _yPositionStart - 0.5f;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -51,14 +58,42 @@ namespace Beans2022.PickUps
 
         private void Update()
         {
-            _yRotation += 1;
 
-            if (_yRotation >= 360)
-            { _yRotation = 0; }
+            if(goUp)
+            {
+                if (_rigidbody.transform.position.y > upperBorder)
+                {
+                    _rigidbody.velocity = new Vector3(0, 0, 0);
+                    goUp = false;
+                }
+                else
+                {
+                    _rigidbody.AddForce(new Vector3(0, hoverSpeed, 0));
+                }
+            }
 
-            Quaternion target = Quaternion.Euler(15, _yRotation, 15);
+            if(!goUp)
+            {
+                Debug.Log("UpperBorder = " + upperBorder);
+                Debug.Log("LowerBorder = " + lowerBorder);
+                Debug.Log(goUp);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * _smooth);
+                if (_rigidbody.transform.position.y < lowerBorder)
+                {
+                    _rigidbody.velocity = new Vector3(0,0,0);
+                    goUp = true;
+                }
+                else
+                {
+                    _rigidbody.AddForce(new Vector3(0,-hoverSpeed,0));
+                }
+
+                Debug.Log("Velocity: " + _rigidbody.velocity);
+
+               
+            }
+
+            
         }
 
         #endregion
