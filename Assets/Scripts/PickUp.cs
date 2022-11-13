@@ -74,9 +74,6 @@ namespace Beans2022.PickUps
 
             if(!goUp)
             {
-                Debug.Log("UpperBorder = " + upperBorder);
-                Debug.Log("LowerBorder = " + lowerBorder);
-                Debug.Log(goUp);
 
                 if (_rigidbody.transform.position.y < lowerBorder)
                 {
@@ -87,10 +84,7 @@ namespace Beans2022.PickUps
                 {
                     _rigidbody.AddForce(new Vector3(0,-hoverSpeed,0));
                 }
-
-                Debug.Log("Velocity: " + _rigidbody.velocity);
-
-               
+ 
             }
 
             

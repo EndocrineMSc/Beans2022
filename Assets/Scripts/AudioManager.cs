@@ -81,7 +81,6 @@ namespace Beans2022.Audio
         {
             sleepPercent = (GameManager.Instance.SleepTimer / maxTimer); //gives percentage loss of time
 
-            Debug.Log(sleepPercent);
             if (sleepPercent > 0.7f)
             {
                 if (bgMusicOne.volume < _musicVolume && !waitForFadeIn)
@@ -99,9 +98,7 @@ namespace Beans2022.Audio
                 if (bgMusicOne.volume > _musicVolume *0.7f)
                 {
                     float fadeVolume = _musicVolume * 0.7f;
-                    Debug.Log("FadeVolume Track 1: " + fadeVolume);
                     StartCoroutine(FadeOutTrack(bgMusicOne, fadeVolume));
-                    Debug.Log("Track 1 after fade: " + bgMusicOne.volume);
                 }
 
                 
@@ -159,13 +156,10 @@ namespace Beans2022.Audio
         private IEnumerator FadeOutTrack(AudioSource audioSource, float fadeVolume)
         {
             waitForFadeOut = true;
-            int i = 1;
             while (audioSource.volume >= fadeVolume)
             {
                 yield return new WaitForSeconds(_fadeSpeed);
                 audioSource.volume -= _volumeIncrement;
-                Debug.Log("Durchlauf i: " + i + "Volume: " + audioSource.volume);
-                i++;
             }
             waitForFadeOut= false;
         }

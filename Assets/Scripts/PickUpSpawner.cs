@@ -10,6 +10,8 @@ public class PickUpSpawner : MonoBehaviour
     #region Fields
 
     [SerializeField] private GameObject boosterPickUp1;
+    [SerializeField] private GameObject boosterPickUp2;
+
     private List<GameObject> PickUps = new List<GameObject>();
 
     private int randomPickUpIndex = 0;
@@ -21,12 +23,12 @@ public class PickUpSpawner : MonoBehaviour
 
     #endregion
 
-
     #region Private Functions
 
     private void Start()
     {
         PickUps.Add(boosterPickUp1);
+        PickUps.Add(boosterPickUp2);
     }
     
         
@@ -41,15 +43,16 @@ public class PickUpSpawner : MonoBehaviour
 
         if (spawnReady)
         {
-            //randomPickUpIndex = Random.Range(0, PickUps.Length-1);
-            //Debug.Log(randomPickUpIndex);
+            randomPickUpIndex = Random.Range(0, 2);
+            Debug.Log(randomPickUpIndex);
 
             GameObject temp = PickUps[randomPickUpIndex];
 
-            Instantiate(temp, new Vector3(100, 1.75f, 0),Quaternion.identity);
+            Instantiate(temp, new Vector3(100, 1.75f, 0),Quaternion.Euler(-90,0,-180));
 
             spawnCooldown = 0;
             spawnReady = false;
+            cooldownActive = false;
         }
     }
 
