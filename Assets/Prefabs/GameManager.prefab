@@ -61,7 +61,7 @@ MonoBehaviour:
   _highscoresEnd: {fileID: 0}
   _gameOver: {fileID: 0}
   _gameSpeed: -10
-  _sleepTimer: 20
+  _sleepTimer: 50
 --- !u!114 &2467150054109518223
 MonoBehaviour:
   m_ObjectHideFlags: 0

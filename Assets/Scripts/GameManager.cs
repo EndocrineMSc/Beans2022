@@ -50,6 +50,14 @@ namespace Beans2022
 			set { _sleepTimer = value; }
 		}
 
+		private float _blinkTimer = 10f;
+
+		public float BlinkTimer
+		{
+			get { return _blinkTimer; }
+			set { _blinkTimer = value; }
+		}
+
 		#endregion
 
 		#region Public Functions
@@ -90,12 +98,7 @@ namespace Beans2022
 				case GameState.GameOver:
                     Time.timeScale = 0;
                     Instance._gameOver.gameObject.SetActive(true);
-					
 					break;
-
-				case GameState.HighScoreMenu:
-					break;
-
 				case GameState.HighScoreEnd:
 					break;
 

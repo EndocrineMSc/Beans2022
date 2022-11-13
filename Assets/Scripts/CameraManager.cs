@@ -23,6 +23,13 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         startSpeed = GameManager.Instance.Speed;
+        PostProcessProfile profile = cinePost.m_Profile;
+        Vignette vign;
+        DepthOfField dof;
+        profile.TryGetSettings(out vign);
+        profile.TryGetSettings(out dof);
+        vign.intensity.Override(0);
+        dof.focusDistance.Override(5);
     }
 
     // Update is called once per frame
@@ -31,10 +38,20 @@ public class CameraManager : MonoBehaviour
         //cineRecomp.m_ZoomScale = 1 + (startSpeed - GameManager.Instance.Speed) * 0.1f;
         if(Input.GetKeyDown(KeyCode.B) && !isBlinking)
         {
-            StartCoroutine(Blink());
+            Blink();
         }
     }
-    IEnumerator Blink()
+
+    public void Blink(float scale=1)
+    {
+        blinkTime = scale;
+        if (!isBlinking)
+        {
+            StartCoroutine(StartBlink());
+        }
+
+    }
+    IEnumerator StartBlink()
     {
         PostProcessProfile profile = cinePost.m_Profile;
         Vignette vign;
@@ -59,6 +76,7 @@ public class CameraManager : MonoBehaviour
         }
         isBlinking = false;
         vign.intensity.Override(0);
+        dof.focusDistance.Override(5f);
     }
 
 }
