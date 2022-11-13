@@ -92,5 +92,5 @@ public class ObstructionSpawner : MonoBehaviour
         spawnReady = true;
     }
 
-       #endregion
+    #endregion
 }
