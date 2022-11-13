@@ -28,7 +28,7 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cineRecomp.m_ZoomScale = 1 + (startSpeed - GameManager.Instance.Speed) * 0.1f;
+        //cineRecomp.m_ZoomScale = 1 + (startSpeed - GameManager.Instance.Speed) * 0.1f;
         if(Input.GetKeyDown(KeyCode.B) && !isBlinking)
         {
             StartCoroutine(Blink());

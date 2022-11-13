@@ -1194,6 +1194,18 @@ MonoBehaviour:
   m_UseImpactDirection: 0
   m_ScaleImpactWithMass: 0
   m_ScaleImpactWithSpeed: 0
+--- !u!114 &1449077601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449077581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4ecb78ab9e8054aae434debdcf4bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1510973061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2283,6 +2295,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d048a9071fc1dd4baad009271ae79f9, type: 3}
+--- !u!1 &5570358729586456879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1685484907103508692, guid: bed3aac66205d13439e487bb3cbaabac, type: 3}
+  m_PrefabInstance: {fileID: 6496979400742986235}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5570358729586456880
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570358729586456879}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 18b213b028518d74fbb6dd2bc6e10acd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6496979400742986235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2290,9 +2327,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6496979401357130281, guid: bed3aac66205d13439e487bb3cbaabac, type: 3}
-      propertyPath: m_Constraints
-      value: 122
+    - target: {fileID: 6496979401357130280, guid: bed3aac66205d13439e487bb3cbaabac, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 5570358729586456880}
+    - target: {fileID: 6496979401357130280, guid: bed3aac66205d13439e487bb3cbaabac, type: 3}
+      propertyPath: gravityScaleFalling
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6496979401357130282, guid: bed3aac66205d13439e487bb3cbaabac, type: 3}
       propertyPath: m_RootOrder
