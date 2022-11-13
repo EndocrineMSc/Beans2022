@@ -31,7 +31,7 @@ public class SleepManager : MonoBehaviour
     {
         GameManager.Instance.SleepTimer -= Time.deltaTime;
         float percentage = GameManager.Instance.SleepTimer / maxTimer;
-        float blinkScaling;
+        float blinkScaling = 1f;
         float dutch = 0f;
 
         /*if (!timerOn)
@@ -40,7 +40,7 @@ public class SleepManager : MonoBehaviour
         }*/
         if(percentage > 0.7f)
         {
-            blinkScaling = 0.5f;
+            blinkScaling = 1f;
             dutch = 0f;
         }
         else if(percentage > 0.3f && percentage < 0.7f)

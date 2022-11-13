@@ -18,6 +18,9 @@ namespace Beans2022
 		[SerializeField] private Canvas _pauseMenu;
 		[SerializeField] private Canvas _gameOver;
 		
+		private float startGamespeed;
+		private float startSleepTimer;
+		private float startBlinkTimer;
 
 		#endregion
 
@@ -67,12 +70,14 @@ namespace Beans2022
 			switch (_state)
 			{
 				case GameState.MainMenu:
-					Instance._mainMenu.gameObject.SetActive(true);
+                    BlinkTimer = startBlinkTimer;
+                    SleepTimer = startSleepTimer;
+                    _gameSpeed = startGamespeed;
+                    Instance._mainMenu.gameObject.SetActive(true);
 					Instance._pauseMenu.gameObject.SetActive(false);
 					Instance._credits.gameObject.SetActive(false);
 					Instance._gameOver.gameObject.SetActive(false);
 					Instance._settings.gameObject.SetActive(false);
-					
                     break;
 
 				case GameState.Credits:
@@ -104,6 +109,7 @@ namespace Beans2022
                     break;
 
 				case GameState.GameOver:
+					
                     Instance._mainMenu.gameObject.SetActive(false);
                     Instance._pauseMenu.gameObject.SetActive(false);
                     Instance._credits.gameObject.SetActive(false);
@@ -163,6 +169,9 @@ namespace Beans2022
 		}
 		private void Start()
 		{
+			startBlinkTimer = BlinkTimer;
+			startGamespeed = _gameSpeed;
+			startSleepTimer = SleepTimer;
 			SwitchState(GameState.MainMenu);
 		}
 
