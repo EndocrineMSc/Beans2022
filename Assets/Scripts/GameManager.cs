@@ -41,9 +41,10 @@ namespace Beans2022
 			private set { _gameSpeed = value; }
 		}
 
-		private int _sleepTimer = 20;
+        [SerializeField]
+        private float _sleepTimer = 20f;
 
-		public int SleepTimer
+		public float SleepTimer
 		{
 			get { return _sleepTimer; }
 			set { _sleepTimer = value; }
@@ -123,7 +124,7 @@ namespace Beans2022
 		#endregion
 
 		#region Private Functions
-		private void Start()
+		private void Awake()
 		{
 			Instance = this;
 			DontDestroyOnLoad(gameObject);

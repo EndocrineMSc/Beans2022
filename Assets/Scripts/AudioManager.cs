@@ -81,7 +81,8 @@ namespace Beans2022.Audio
         {
             sleepPercent = (GameManager.Instance.SleepTimer / maxTimer); //gives percentage loss of time
 
-            if (sleepPercent > 0.7)
+            Debug.Log(sleepPercent);
+            if (sleepPercent > 0.7f)
             {
                 if (bgMusicOne.volume < _musicVolume && !waitForFadeIn)
                 {
@@ -93,7 +94,7 @@ namespace Beans2022.Audio
                     StartCoroutine(FadeOutTrack(bgMusicTwo, 0));
                 }
             }
-            else if (sleepPercent < 0.7 && sleepPercent > 0.3 && !waitForFadeOut)
+            else if (sleepPercent < 0.7f && sleepPercent > 0.3f && !waitForFadeOut)
             {
                 if (bgMusicOne.volume > _musicVolume *0.7f)
                 {

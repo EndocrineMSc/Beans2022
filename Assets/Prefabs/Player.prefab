@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  animator: {fileID: 5570358729586456880}
   jumpHeight: 7
   gravityScale: 3
   gravityScaleFalling: 5
@@ -162,6 +163,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fda84e1d52931348a1823bc5db1943f, type: 3}
+--- !u!1 &1685484907103508692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3326954850372065380, guid: 4fda84e1d52931348a1823bc5db1943f, type: 3}
+  m_PrefabInstance: {fileID: 4129726473527312560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5570358729586456880
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685484907103508692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 18b213b028518d74fbb6dd2bc6e10acd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &2031083004769567342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2693266254793327326, guid: 4fda84e1d52931348a1823bc5db1943f, type: 3}
