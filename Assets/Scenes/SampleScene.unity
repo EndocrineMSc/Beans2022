@@ -939,11 +939,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770041429}
   m_CullTransparentMesh: 1
---- !u!1 &1184125211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4283984629360442, guid: 306acfd618ba8614981405da5d5d9cdf, type: 3}
-  m_PrefabInstance: {fileID: 4283984999598344}
-  m_PrefabAsset: {fileID: 0}
 --- !u!223 &1184125214 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 4283984629360445, guid: 306acfd618ba8614981405da5d5d9cdf, type: 3}
@@ -1407,7 +1402,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583674915}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1583674918
 Camera:
   m_ObjectHideFlags: 0
@@ -2242,31 +2237,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d048a9071fc1dd4baad009271ae79f9, type: 3}
---- !u!1 &5570358729586456879 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1685484907103508692, guid: bed3aac66205d13439e487bb3cbaabac, type: 3}
-  m_PrefabInstance: {fileID: 6496979400742986235}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &5570358729586456880
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5570358729586456879}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 18b213b028518d74fbb6dd2bc6e10acd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6496979400742986235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2274,14 +2244,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6496979401357130280, guid: bed3aac66205d13439e487bb3cbaabac, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 5570358729586456880}
-    - target: {fileID: 6496979401357130280, guid: bed3aac66205d13439e487bb3cbaabac, type: 3}
-      propertyPath: gravityScaleFalling
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6496979401357130282, guid: bed3aac66205d13439e487bb3cbaabac, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2339,18 +2301,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 755517645, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
-      propertyPath: cinePost
-      value: 
-      objectReference: {fileID: 621383656}
-    - target: {fileID: 755517645, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
-      propertyPath: cineRecomp
-      value: 
-      objectReference: {fileID: 621383655}
     - target: {fileID: 140738543171468124, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2656620878608079305, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+      propertyPath: cinePost
+      value: 
+      objectReference: {fileID: 621383656}
+    - target: {fileID: 2656620878608079305, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+      propertyPath: cineRecomp
+      value: 
+      objectReference: {fileID: 621383655}
     - target: {fileID: 2779730232140194376, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2399,14 +2361,10 @@ PrefabInstance:
       propertyPath: _mainMenu
       value: 
       objectReference: {fileID: 1184125214}
-    - target: {fileID: 7979160641421071044, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
-      propertyPath: mainMenu
-      value: 
-      objectReference: {fileID: 1184125211}
-    - target: {fileID: 7979160641421071044, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
-      propertyPath: pauseMenuUI
-      value: 
-      objectReference: {fileID: 770041429}
+    - target: {fileID: 4478662918762043578, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+      propertyPath: _sleepTimer
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
 --- !u!1001 &8757973055288038331

@@ -9,7 +9,8 @@ public class SleepManager : MonoBehaviour
 {
     #region Fields
 
-    private float _sleepTimer;
+    private float maxTimer;
+    private float blinkTimer;
     private bool timerOn;
 
     #endregion
@@ -21,22 +22,44 @@ public class SleepManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _sleepTimer = GameManager.Instance.SleepTimer;
+        maxTimer = GameManager.Instance.SleepTimer;
+        blinkTimer = GameManager.Instance.BlinkTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
         GameManager.Instance.SleepTimer -= Time.deltaTime;
+        float percentage = GameManager.Instance.SleepTimer / maxTimer;
+        float blinkScaling;
 
         /*if (!timerOn)
         {
             StartCoroutine(nameof(SleepCountdown));
         }*/
-
+        if(percentage > 0.7f)
+        {
+            blinkScaling = 0.5f;
+        }
+        else if(percentage > 0.3f && percentage < 0.7f)
+        {
+            blinkScaling = 1f;
+        }
+        else
+        {
+            blinkScaling = 2f;
+        }
         if (GameManager.Instance.SleepTimer < 0)
         {
             GameManager.Instance.SwitchState(GameState.GameOver);
+        }
+        GameManager.Instance.BlinkTimer -= Time.deltaTime * blinkScaling;
+
+        if(GameManager.Instance.BlinkTimer < 0)
+        {
+            GameManager.Instance.BlinkTimer = blinkTimer;
+            gameObject.GetComponent<CameraManager>().Blink(blinkScaling);
+            
         }
     }
     #endregion
