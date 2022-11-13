@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,9 @@ namespace Beans2022.Audio
         [SerializeField] private AudioSource bgMusicOne;
         [SerializeField] private AudioSource bgMusicTwo;
         [SerializeField] private AudioSource bgMusicThree;
+        [SerializeField] private GameObject sfxObject;
         [SerializeField] private GameObject voiceLineObject;
+        private AudioSource[] sfx;
         private AudioSource[] randomVoiceLines;
 
         [SerializeField] private float _fadeSpeed = 0.5f;
@@ -38,7 +41,7 @@ namespace Beans2022.Audio
             set { _musicVolume = value; }
         }
 
-        private float _sfxVolume;
+        private float _sfxVolume = 0.3f;
 
         public float SFXVolume
         {
@@ -62,6 +65,30 @@ namespace Beans2022.Audio
             bgMusicOne.Play();
         }
 
+        public void PlayJump()
+        {
+            sfx[Random.Range(0,2)].Play();
+
+        }
+
+        public void PlayMenuClick()
+        {
+            sfx[4].Play();
+        }
+
+        public void PlayCollision()
+        {
+            sfx[Random.Range(2, 4)].Play();
+        }
+        public void PlayPickUpBooster()
+        {
+            sfx[Random.Range(5, 9)].Play();
+        }
+        public void PlayPickUpDowner()
+        {
+            sfx[Random.Range(9, 12)].Play();
+        }
+
         #endregion
 
         #region Private Functions
@@ -74,6 +101,7 @@ namespace Beans2022.Audio
 
             maxTimer = GameManager.Instance.SleepTimer;
             randomVoiceLines = voiceLineObject.GetComponents<AudioSource>();
+            sfx = sfxObject.GetComponents<AudioSource>();
             bgMusicOne.Play();
         }
 

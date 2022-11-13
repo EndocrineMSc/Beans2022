@@ -1,3 +1,5 @@
+using Beans2022;
+using Beans2022.Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,11 +45,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(horizontalInput * speed * Time.deltaTime, 0, verticalInput * 0.4f * speed * Time.deltaTime);
-
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             isJumping = true;
@@ -89,6 +86,7 @@ public class Player : MonoBehaviour
     void Jump()
     {
         animator.SetBool("isJumping", true);
+        GameManager.Instance.GetComponent<AudioManager>().PlayJump();
         float jumpForce = Mathf.Sqrt(jumpHeight * -2 * Physics.gravity.y * gravityScale);
         rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
     }
