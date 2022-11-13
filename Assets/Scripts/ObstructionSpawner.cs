@@ -43,7 +43,7 @@ public class ObstructionSpawner : MonoBehaviour
 
         if (spawnReady)
         {
-            randomObstructionIndex = Random.Range(0, 5);
+            randomObstructionIndex = Random.Range(0, 4);
 
 
             GameObject temp = spawnList[randomObstructionIndex];

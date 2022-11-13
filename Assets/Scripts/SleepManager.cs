@@ -51,7 +51,7 @@ public class SleepManager : MonoBehaviour
         else
         {
             blinkScaling = 2f;
-            dutch = Random.RandomRange(-10f, 10f);
+            dutch = Random.Range(-10f, 10f);
 
         }
         if (GameManager.Instance.SleepTimer < 0)

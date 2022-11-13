@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,7 +41,7 @@ public class CreatureSpawner : MonoBehaviour
 
         if (spawnReady) 
         {
-            randomEnemy = Random.Range(0, 2);
+            randomEnemy = UnityEngine.Random.Range(0, 2);
 
             GameObject temp = spawnList[randomEnemy];
 
@@ -50,10 +51,22 @@ public class CreatureSpawner : MonoBehaviour
             }
             else
             {
-                Instantiate(temp, new Vector3(100, -3, 0), Quaternion.Euler(0, 180, 0));
+                Instantiate(temp, new Vector3(100, 2.53f, 0), Quaternion.Euler(-90, 0, 0));
             }
+
+            spawnCooldown = 0;
+            spawnReady = false;
+            cooldownActive = false;
+
+            if (spawnCooldownStart > 3)
+            {
+                spawnCooldownStart--;
+            }
+
         }
     }
+
+  
 
     #endregion
 
