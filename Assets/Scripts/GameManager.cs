@@ -78,6 +78,7 @@ namespace Beans2022
 					Instance._credits.gameObject.SetActive(false);
 					Instance._gameOver.gameObject.SetActive(false);
 					Instance._settings.gameObject.SetActive(false);
+					_state = state;
                     break;
 
 				case GameState.Credits:
@@ -87,6 +88,7 @@ namespace Beans2022
                     Instance._gameOver.gameObject.SetActive(false);
                     Instance._settings.gameObject.SetActive(false);
                     Time.timeScale = 0;
+                    _state = state;
                     break;
 
 				case GameState.Settings:
@@ -96,6 +98,7 @@ namespace Beans2022
                     Instance._gameOver.gameObject.SetActive(false);
                     Instance._settings.gameObject.SetActive(true);
                     Time.timeScale = 0;
+                    _state = state;
                     break;
 
 				case GameState.GameStarting:
@@ -106,6 +109,7 @@ namespace Beans2022
                     Instance._gameOver.gameObject.SetActive(false);
                     Instance._settings.gameObject.SetActive(false);
                     Time.timeScale = 1;
+                    _state = state;
                     break;
 
 				case GameState.GameOver:
@@ -116,6 +120,7 @@ namespace Beans2022
                     Instance._gameOver.gameObject.SetActive(true);
                     Instance._settings.gameObject.SetActive(false);
                     Time.timeScale = 0;
+                    _state = state;
                     break;
 				case GameState.HighScoreEnd:
                     Instance._mainMenu.gameObject.SetActive(false);
@@ -124,6 +129,7 @@ namespace Beans2022
                     Instance._gameOver.gameObject.SetActive(false);
                     Instance._settings.gameObject.SetActive(false);
                     Time.timeScale = 0;
+                    _state = state;
                     break;
 
 				case GameState.Pause:
@@ -133,6 +139,7 @@ namespace Beans2022
                     Instance._gameOver.gameObject.SetActive(false);
                     Instance._settings.gameObject.SetActive(false);
                     Time.timeScale = 0;
+                    _state = state;
                     break;
 
 				case GameState.Quit:
@@ -172,7 +179,7 @@ namespace Beans2022
 			startBlinkTimer = BlinkTimer;
 			startGamespeed = _gameSpeed;
 			startSleepTimer = SleepTimer;
-			SwitchState(GameState.MainMenu);
+			Instance.SwitchState(GameState.MainMenu);
 		}
 
 		#endregion
