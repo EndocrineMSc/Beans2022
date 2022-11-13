@@ -32,6 +32,7 @@ public class SleepManager : MonoBehaviour
         GameManager.Instance.SleepTimer -= Time.deltaTime;
         float percentage = GameManager.Instance.SleepTimer / maxTimer;
         float blinkScaling;
+        float dutch = 0f;
 
         /*if (!timerOn)
         {
@@ -40,20 +41,28 @@ public class SleepManager : MonoBehaviour
         if(percentage > 0.7f)
         {
             blinkScaling = 0.5f;
+            dutch = 0f;
         }
         else if(percentage > 0.3f && percentage < 0.7f)
         {
             blinkScaling = 1f;
+            dutch = 0f;
         }
         else
         {
             blinkScaling = 2f;
+            dutch = Random.RandomRange(-10f, 10f);
+
         }
         if (GameManager.Instance.SleepTimer < 0)
         {
             GameManager.Instance.SwitchState(GameState.GameOver);
         }
         GameManager.Instance.BlinkTimer -= Time.deltaTime * blinkScaling;
+        if (!GameManager.Instance.GetComponent<CameraManager>().changeDutch)
+        {
+            GameManager.Instance.GetComponent<CameraManager>().dutch = dutch;
+        }
 
         if(GameManager.Instance.BlinkTimer < 0)
         {

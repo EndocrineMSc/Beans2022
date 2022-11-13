@@ -13,10 +13,13 @@ public class CameraManager : MonoBehaviour
     [SerializeField] CinemachinePostProcessing cinePost;
     public float blinkTime;
     public float blinkValue;
+    public float oldDutch = 0f;
+    public float dutch = 0f;
 
     int steps = 100;
 
     bool isBlinking = false;
+    public bool changeDutch = false;
 
     float startSpeed;
     // Start is called before the first frame update
@@ -30,6 +33,7 @@ public class CameraManager : MonoBehaviour
         profile.TryGetSettings(out dof);
         vign.intensity.Override(0);
         dof.focusDistance.Override(5);
+        cineRecomp.m_Dutch = 0f;
     }
 
     // Update is called once per frame
@@ -40,6 +44,32 @@ public class CameraManager : MonoBehaviour
         {
             Blink();
         }
+        if(dutch != cineRecomp.m_Dutch)
+        {
+            changeDutch = true;
+            StartCoroutine(ChangeDutch());
+        }
+    }
+
+    IEnumerator ChangeDutch()
+    {
+        if (cineRecomp.m_Dutch > dutch)
+        {
+            while(cineRecomp.m_Dutch > dutch)
+            {
+                cineRecomp.m_Dutch -= 0.005f;
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+        else {
+            while (cineRecomp.m_Dutch < dutch)
+            {
+                cineRecomp.m_Dutch += 0.005f;
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+        changeDutch = false;
+        dutch = cineRecomp.m_Dutch;
     }
 
     public void Blink(float scale=1)
