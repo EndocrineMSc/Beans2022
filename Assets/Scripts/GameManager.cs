@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+using Beans2022.Audio;
 
 namespace Beans2022
 {
@@ -41,12 +41,21 @@ namespace Beans2022
 			private set { _gameSpeed = value; }
 		}
 
-		private int _sleepTimer = 10000;
+        [SerializeField]
+        private float _sleepTimer = 20f;
 
-		public int SleepTimer
+		public float SleepTimer
 		{
 			get { return _sleepTimer; }
 			set { _sleepTimer = value; }
+		}
+
+		private float _blinkTimer = 10f;
+
+		public float BlinkTimer
+		{
+			get { return _blinkTimer; }
+			set { _blinkTimer = value; }
 		}
 
 		#endregion
@@ -79,6 +88,7 @@ namespace Beans2022
 					break;
 
 				case GameState.GameStarting:
+					Time.timeScale = 1;
                     GetComponent<CameraManager>().gameObject.SetActive(true);
                     break;
 
@@ -86,11 +96,9 @@ namespace Beans2022
 					break;
 
 				case GameState.GameOver:
+                    Time.timeScale = 0;
+                    Instance._gameOver.gameObject.SetActive(true);
 					break;
-
-				case GameState.HighScoreMenu:
-					break;
-
 				case GameState.HighScoreEnd:
 					break;
 
@@ -123,7 +131,7 @@ namespace Beans2022
 		#endregion
 
 		#region Private Functions
-		private void Start()
+		private void Awake()
 		{
 			Instance = this;
 			DontDestroyOnLoad(gameObject);

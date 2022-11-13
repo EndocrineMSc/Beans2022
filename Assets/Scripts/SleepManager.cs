@@ -9,7 +9,8 @@ public class SleepManager : MonoBehaviour
 {
     #region Fields
 
-    private int _sleepTimer;
+    private float maxTimer;
+    private float blinkTimer;
     private bool timerOn;
 
     #endregion
@@ -21,22 +22,53 @@ public class SleepManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _sleepTimer = GameManager.Instance.SleepTimer;
+        maxTimer = GameManager.Instance.SleepTimer;
+        blinkTimer = GameManager.Instance.BlinkTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _sleepTimer = GameManager.Instance.SleepTimer;
+        GameManager.Instance.SleepTimer -= Time.deltaTime;
+        float percentage = GameManager.Instance.SleepTimer / maxTimer;
+        float blinkScaling;
+        float dutch = 0f;
 
-        if (!timerOn)
+        /*if (!timerOn)
         {
             StartCoroutine(nameof(SleepCountdown));
+        }*/
+        if(percentage > 0.7f)
+        {
+            blinkScaling = 0.5f;
+            dutch = 0f;
         }
+        else if(percentage > 0.3f && percentage < 0.7f)
+        {
+            blinkScaling = 1f;
+            dutch = 0f;
+        }
+        else
+        {
+            blinkScaling = 2f;
+            dutch = Random.RandomRange(-10f, 10f);
 
-        if (_sleepTimer <= 0)
+        }
+        if (GameManager.Instance.SleepTimer < 0)
         {
             GameManager.Instance.SwitchState(GameState.GameOver);
+        }
+        GameManager.Instance.BlinkTimer -= Time.deltaTime * blinkScaling;
+        if (!GameManager.Instance.GetComponent<CameraManager>().changeDutch)
+        {
+            GameManager.Instance.GetComponent<CameraManager>().dutch = dutch;
+        }
+
+        if(GameManager.Instance.BlinkTimer < 0)
+        {
+            GameManager.Instance.BlinkTimer = blinkTimer;
+            gameObject.GetComponent<CameraManager>().Blink(blinkScaling);
+            
         }
     }
     #endregion

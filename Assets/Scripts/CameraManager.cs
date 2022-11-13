@@ -1,83 +1,112 @@
 using Beans2022;
 using Cinemachine;
+using Cinemachine.PostFX;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+
 public class CameraManager : MonoBehaviour
 {
 
     [SerializeField] CinemachineRecomposer cineRecomp;
-    [SerializeField] CinemachineStoryboard cineSB;
-    public float blinkSpeed;
-    public float closedTime;
+    [SerializeField] CinemachinePostProcessing cinePost;
+    public float blinkTime;
+    public float blinkValue;
+    public float oldDutch = 0f;
+    public float dutch = 0f;
+
+    int steps = 100;
 
     bool isBlinking = false;
+    public bool changeDutch = false;
 
     float startSpeed;
     // Start is called before the first frame update
     void Start()
     {
         startSpeed = GameManager.Instance.Speed;
+        PostProcessProfile profile = cinePost.m_Profile;
+        Vignette vign;
+        DepthOfField dof;
+        profile.TryGetSettings(out vign);
+        profile.TryGetSettings(out dof);
+        vign.intensity.Override(0);
+        dof.focusDistance.Override(5);
+        cineRecomp.m_Dutch = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        cineRecomp.m_ZoomScale = 1 + (startSpeed - GameManager.Instance.Speed) * 0.1f;
+        //cineRecomp.m_ZoomScale = 1 + (startSpeed - GameManager.Instance.Speed) * 0.1f;
         if(Input.GetKeyDown(KeyCode.B) && !isBlinking)
         {
             Blink();
         }
-    }
-    void Blink()
-    {
-        isBlinking = true;
-        StartCoroutine(blinkIn());
+        if(dutch != cineRecomp.m_Dutch)
+        {
+            changeDutch = true;
+            StartCoroutine(ChangeDutch());
+        }
     }
 
-    IEnumerator blinkIn()
+    IEnumerator ChangeDutch()
     {
-        
-        while (cineSB.m_Alpha < 1)
+        if (cineRecomp.m_Dutch > dutch)
         {
-            cineSB.m_Alpha += 0.02f;
-            cineSB.m_Scale.y -= 0.01f;
-            yield return new WaitForSeconds(blinkSpeed * 0.02f);
+            while(cineRecomp.m_Dutch > dutch)
+            {
+                cineRecomp.m_Dutch -= 0.005f;
+                yield return new WaitForSeconds(0.05f);
+            }
         }
-        StartCoroutine (waitBlinkClosing());
+        else {
+            while (cineRecomp.m_Dutch < dutch)
+            {
+                cineRecomp.m_Dutch += 0.005f;
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+        changeDutch = false;
+        dutch = cineRecomp.m_Dutch;
     }
-    IEnumerator waitBlinkClosing()
+
+    public void Blink(float scale=1)
     {
-        int i = 0;
-        while (i < closedTime * 50)
+        blinkTime = scale;
+        if (!isBlinking)
         {
-            i++;
-            cineSB.m_Scale.y -= 0.005f;
-            yield return new WaitForSeconds(0.01f);
+            StartCoroutine(StartBlink());
         }
-        StartCoroutine(waitBlinkOpen());
+
     }
-    IEnumerator waitBlinkOpen()
+    IEnumerator StartBlink()
     {
-        int i = 0;
-        while (i < closedTime * 50)
+        PostProcessProfile profile = cinePost.m_Profile;
+        Vignette vign;
+        DepthOfField dof;
+        profile.TryGetSettings(out vign);
+        profile.TryGetSettings(out dof);
+        isBlinking = true;
+        float valueStep = blinkValue * 1f / steps * blinkTime / 2f;
+        float timeStep = (1f / steps) * (blinkTime / 3f);
+        for (int i = 0; i < steps; i++)
         {
-            i++;
-            cineSB.m_Scale.y += 0.005f;
-            yield return new WaitForSeconds(0.01f);
+            dof.focusDistance.Override(5f - i * 4f / steps);
+            vign.intensity.Override(vign.intensity + valueStep);
+            yield return new WaitForSeconds(timeStep);
         }
-        StartCoroutine(blinkOut());
-    }
-    IEnumerator blinkOut()
-    {
-        while (cineSB.m_Alpha > 0)
+        yield return new WaitForSeconds(blinkTime / 3);
+        for (int i = 0; i < steps; i++)
         {
-            cineSB.m_Alpha -= 0.02f;
-            cineSB.m_Scale.y += 0.01f;
-            yield return new WaitForSeconds(blinkSpeed * 0.02f);
+            dof.focusDistance.Override(1f + i * 4 / steps);
+            vign.intensity.Override(vign.intensity - valueStep);
+            yield return new WaitForSeconds(timeStep);
         }
-        cineSB.m_Alpha = 0;
-        cineSB.m_Scale.y = 2.2f;
         isBlinking = false;
+        vign.intensity.Override(0);
+        dof.focusDistance.Override(5f);
     }
+
 }
