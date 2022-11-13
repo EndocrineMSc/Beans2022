@@ -120,6 +120,7 @@ MonoBehaviour:
   boosterPickUp2: {fileID: 1196165156630311472, guid: 9252c9b3d92617f4f915be6b68af66a2, type: 3}
   boosterPickUp3: {fileID: 864038049990607431, guid: e96f262d44da3844c9034f789ef1360d, type: 3}
   boosterPickUp4: {fileID: 1482834787919390262, guid: e9e2e4570e4630440a6d03064400e689, type: 3}
+  boosterPickUp5: {fileID: 0}
   spawnCooldownStart: 10
 --- !u!82 &2455877538352669217
 AudioSource:
@@ -425,6 +426,9 @@ MonoBehaviour:
   cinePost: {fileID: 0}
   blinkTime: 2
   blinkValue: 0.7
+  oldDutch: 0
+  dutch: 0
+  changeDutch: 0
 --- !u!114 &755517646
 MonoBehaviour:
   m_ObjectHideFlags: 0
