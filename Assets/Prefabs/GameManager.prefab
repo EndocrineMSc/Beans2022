@@ -13,11 +13,12 @@ GameObject:
   - component: {fileID: 2467150054109518223}
   - component: {fileID: 3760682895508639986}
   - component: {fileID: 755517641}
-  - component: {fileID: 755517645}
-  - component: {fileID: 755517646}
+  - component: {fileID: 1531889119788801335}
   - component: {fileID: 2455877538352669217}
   - component: {fileID: 3598322541281995973}
   - component: {fileID: 6216956559517122510}
+  - component: {fileID: 755517645}
+  - component: {fileID: 755517646}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
   voiceLineObject: {fileID: 0}
   _fadeSpeed: 0.1
   _volumeIncrement: 0.1
---- !u!114 &755517645
+--- !u!114 &1531889119788801335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,26 +112,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 140738543171468124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34535d618e5671842b4afc0bbc0b2855, type: 3}
+  m_Script: {fileID: 11500000, guid: d37d3facef0d38e4b8356b3d23781a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cineRecomp: {fileID: 0}
-  cineSB: {fileID: 0}
-  blinkSpeed: 0
-  closedTime: 0
---- !u!114 &755517646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140738543171468124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76bc711d16a739843ae9fc8230099742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
+  PickUpObject: {fileID: 0}
+  spawnCooldownStart: 10
 --- !u!82 &2455877538352669217
 AudioSource:
   m_ObjectHideFlags: 0
@@ -419,3 +405,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &755517645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140738543171468124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34535d618e5671842b4afc0bbc0b2855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cineRecomp: {fileID: 0}
+  cinePost: {fileID: 0}
+  blinkTime: 2
+  blinkValue: 0.7
+--- !u!114 &755517646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140738543171468124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76bc711d16a739843ae9fc8230099742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 0}
+  mainMenu: {fileID: 0}
