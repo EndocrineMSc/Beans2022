@@ -23,6 +23,13 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         startSpeed = GameManager.Instance.Speed;
+        PostProcessProfile profile = cinePost.m_Profile;
+        Vignette vign;
+        DepthOfField dof;
+        profile.TryGetSettings(out vign);
+        profile.TryGetSettings(out dof);
+        vign.intensity.Override(0);
+        dof.focusDistance.Override(5);
     }
 
     // Update is called once per frame
