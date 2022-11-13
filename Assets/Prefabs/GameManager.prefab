@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 2656620878608079305}
   - component: {fileID: 755517646}
   - component: {fileID: 2332787535889162039}
+  - component: {fileID: 8134037660205324314}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -458,3 +459,18 @@ MonoBehaviour:
   grave: {fileID: 6404448667490096433, guid: 9cc7edbd6cc3ea244ae8354900dc2870, type: 3}
   trashBin: {fileID: 1441315904335588069, guid: 89bb3f45ea436404f8b58ff2ad83ba44, type: 3}
   spawnCooldownStart: 10
+--- !u!114 &8134037660205324314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140738543171468124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec1a74fb49a7a34898cc7c62ec2e84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  observer: {fileID: 0}
+  slenderMan: {fileID: 0}
+  spawnCooldownStart: 0
