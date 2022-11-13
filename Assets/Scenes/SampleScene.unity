@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43958056, g: 0.47991884, b: 0.5247352, a: 1}
+  m_IndirectSpecularColor: {r: 0.43957996, g: 0.47991818, b: 0.5247344, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -447,6 +447,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d2a0eddd2da2ec4a97ab6f2d1f1a165, type: 3}
+--- !u!1001 &999699802
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 404647627062254510, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_Name
+      value: SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 59.002598
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -577.78894
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1064.812
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684522592196063617, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
 --- !u!223 &1184125214 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5833884014110336702, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
@@ -1114,6 +1171,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 755517641, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+      propertyPath: sfxObject
+      value: 
+      objectReference: {fileID: 404647627062254510, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
     - target: {fileID: 755517641, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
       propertyPath: voiceLineObject
       value: 

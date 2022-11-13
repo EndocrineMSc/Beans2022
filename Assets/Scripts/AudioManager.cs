@@ -71,6 +71,11 @@ namespace Beans2022.Audio
 
         }
 
+        public void PlayMenuClick()
+        {
+            sfx[4].Play();
+        }
+
         public void PlayCollision()
         {
             sfx[Random.Range(2, 4)].Play();
