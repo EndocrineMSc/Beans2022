@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumCollection;
 
 namespace Beans2022.Audio
 {
@@ -13,6 +14,7 @@ namespace Beans2022.Audio
         [SerializeField] private AudioSource bgMusicOne;
         [SerializeField] private AudioSource bgMusicTwo;
         [SerializeField] private AudioSource bgMusicThree;
+        [SerializeField] private AudioSource menuMusic;
         [SerializeField] private GameObject sfxObject;
         [SerializeField] private GameObject voiceLineObject;
         private AudioSource[] sfx;
@@ -24,7 +26,6 @@ namespace Beans2022.Audio
         private float sleepPercent; //how tired are we in percentage of the SpeedTimer
         private float maxTimer; //how much time does the player start with (get from Game Manager)
         private bool waiting; //for random Voice Line IEnumerator
-
 
         private bool waitForFadeOut;
         private bool waitForFadeIn;
@@ -109,60 +110,70 @@ namespace Beans2022.Audio
         {
             sleepPercent = (GameManager.Instance.SleepTimer / maxTimer); //gives percentage loss of time
 
-            if (sleepPercent > 0.7f)
+            if (GameManager.Instance.State == GameState.MainMenu && !menuMusic.isPlaying)
             {
-                if (bgMusicOne.volume < _musicVolume && !waitForFadeIn)
-                {
-                    StartCoroutine(FadeInTrack(bgMusicOne, _musicVolume));
-                }
-
-                if (bgMusicTwo.volume >= _musicVolume)
-                {
-                    StartCoroutine(FadeOutTrack(bgMusicTwo, 0));
-                }
-            }
-            else if (sleepPercent < 0.7f && sleepPercent > 0.3f && !waitForFadeOut)
-            {
-                if (bgMusicOne.volume > _musicVolume *0.7f)
-                {
-                    float fadeVolume = _musicVolume * 0.7f;
-                    StartCoroutine(FadeOutTrack(bgMusicOne, fadeVolume));
-                }
-
-                
-                if (bgMusicOne.volume < _musicVolume * 0.7f && !waitForFadeIn)
-                {
-                    float fadeVolume = _musicVolume * 0.7f;
-                    StartCoroutine(FadeInTrack(bgMusicOne, fadeVolume));
-                }
-
-                if (bgMusicThree.volume >= _musicVolume && !waitForFadeOut)
-                {
-                    StartCoroutine(FadeOutTrack(bgMusicThree, 0));
-                }
-
-                if (bgMusicTwo.volume < _musicVolume && !waitForFadeIn)
-                {
-                    StartCoroutine(FadeInTrack(bgMusicTwo, _musicVolume));
-                }  
-            }
-            else if (sleepPercent < 0.3)
-            {
-                if (bgMusicOne.volume >= _musicVolume * 0.5 && !waitForFadeOut)
-                {
-                    float fadeVolume = _musicVolume * 0.5f;
-                    StartCoroutine(FadeOutTrack(bgMusicOne, fadeVolume));
-                }
-
-                if (bgMusicThree.volume < _musicVolume && !waitForFadeIn)
-                {
-                    StartCoroutine(FadeInTrack(bgMusicThree, _musicVolume));
-                }
+                menuMusic.Play();
             }
 
-            if (!waiting)
+            if (GameManager.Instance.State == GameState.GameStarting)
             {
-                StartCoroutine(nameof(RandomVoiceLineGenerator));
+
+                StartCoroutine(FadeOutTrack(menuMusic, 0));
+                if (sleepPercent > 0.7f)
+                {
+                    if (bgMusicOne.volume < _musicVolume && !waitForFadeIn)
+                    {
+                        StartCoroutine(FadeInTrack(bgMusicOne, _musicVolume));
+                    }
+
+                    if (bgMusicTwo.volume >= _musicVolume)
+                    {
+                        StartCoroutine(FadeOutTrack(bgMusicTwo, 0));
+                    }
+                }
+                else if (sleepPercent < 0.7f && sleepPercent > 0.3f && !waitForFadeOut)
+                {
+                    if (bgMusicOne.volume > _musicVolume * 0.7f)
+                    {
+                        float fadeVolume = _musicVolume * 0.7f;
+                        StartCoroutine(FadeOutTrack(bgMusicOne, fadeVolume));
+                    }
+
+
+                    if (bgMusicOne.volume < _musicVolume * 0.7f && !waitForFadeIn)
+                    {
+                        float fadeVolume = _musicVolume * 0.7f;
+                        StartCoroutine(FadeInTrack(bgMusicOne, fadeVolume));
+                    }
+
+                    if (bgMusicThree.volume >= _musicVolume && !waitForFadeOut)
+                    {
+                        StartCoroutine(FadeOutTrack(bgMusicThree, 0));
+                    }
+
+                    if (bgMusicTwo.volume < _musicVolume && !waitForFadeIn)
+                    {
+                        StartCoroutine(FadeInTrack(bgMusicTwo, _musicVolume));
+                    }
+                }
+                else if (sleepPercent < 0.3)
+                {
+                    if (bgMusicOne.volume >= _musicVolume * 0.5 && !waitForFadeOut)
+                    {
+                        float fadeVolume = _musicVolume * 0.5f;
+                        StartCoroutine(FadeOutTrack(bgMusicOne, fadeVolume));
+                    }
+
+                    if (bgMusicThree.volume < _musicVolume && !waitForFadeIn)
+                    {
+                        StartCoroutine(FadeInTrack(bgMusicThree, _musicVolume));
+                    }
+                }
+
+                if (!waiting)
+                {
+                    StartCoroutine(nameof(RandomVoiceLineGenerator));
+                }
             }
         }
 

@@ -11,7 +11,6 @@ public class SleepManager : MonoBehaviour
 
     private float maxTimer;
     private float blinkTimer;
-    private bool timerOn;
 
     #endregion
 
@@ -75,14 +74,6 @@ public class SleepManager : MonoBehaviour
 
 
     #region IEnumerators
-
-    private IEnumerator SleepCountdown()
-    {
-        timerOn = true;
-        yield return new WaitForSeconds(1);
-        GameManager.Instance.SleepTimer -= 1;
-        timerOn = false;
-    }
 
 
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43957996, g: 0.47991818, b: 0.5247344, a: 1}
+  m_IndirectSpecularColor: {r: 0.43958056, g: 0.47991884, b: 0.5247352, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -139,6 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2074035046bef4847984720bec824ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &247408294 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5250076249764276568, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+  m_PrefabInstance: {fileID: 8665120353665022222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &364026551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,6 +1177,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 755517641, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+      propertyPath: menuMusic
+      value: 
+      objectReference: {fileID: 247408294}
+    - target: {fileID: 755517641, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
       propertyPath: sfxObject
       value: 
       objectReference: {fileID: 404647627062254510, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
@@ -1267,6 +1276,14 @@ PrefabInstance:
       propertyPath: _pauseMenu
       value: 
       objectReference: {fileID: 1629962798}
+    - target: {fileID: 5250076249764276568, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250076249764276568, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8134037660205324314, guid: 75cf4bd07d32ead4e9438cc052cc278f, type: 3}
       propertyPath: observer
       value: 
