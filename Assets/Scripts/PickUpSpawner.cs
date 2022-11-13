@@ -48,7 +48,6 @@ public class PickUpSpawner : MonoBehaviour
         if (spawnReady)
         {
             randomPickUpIndex = Random.Range(0, 4);
-            Debug.Log(randomPickUpIndex);
 
             GameObject temp = PickUps[randomPickUpIndex];
 
