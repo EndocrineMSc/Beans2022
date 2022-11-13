@@ -34,7 +34,7 @@ public class SleepManager : MonoBehaviour
             StartCoroutine(nameof(SleepCountdown));
         }*/
 
-        if (_sleepTimer <= 0)
+        if (GameManager.Instance.SleepTimer < 0)
         {
             GameManager.Instance.SwitchState(GameState.GameOver);
         }

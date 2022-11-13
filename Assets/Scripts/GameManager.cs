@@ -80,6 +80,7 @@ namespace Beans2022
 					break;
 
 				case GameState.GameStarting:
+					Time.timeScale = 1;
                     GetComponent<CameraManager>().gameObject.SetActive(true);
                     break;
 
@@ -87,6 +88,9 @@ namespace Beans2022
 					break;
 
 				case GameState.GameOver:
+                    Time.timeScale = 0;
+                    Instance._gameOver.gameObject.SetActive(true);
+					
 					break;
 
 				case GameState.HighScoreMenu:
