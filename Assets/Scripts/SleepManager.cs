@@ -9,7 +9,7 @@ public class SleepManager : MonoBehaviour
 {
     #region Fields
 
-    private int _sleepTimer;
+    private float _sleepTimer;
     private bool timerOn;
 
     #endregion
@@ -27,14 +27,14 @@ public class SleepManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _sleepTimer = GameManager.Instance.SleepTimer;
+        GameManager.Instance.SleepTimer -= Time.deltaTime;
 
-        if (!timerOn)
+        /*if (!timerOn)
         {
             StartCoroutine(nameof(SleepCountdown));
-        }
+        }*/
 
-        if (_sleepTimer <= 0)
+        if (GameManager.Instance.SleepTimer < 0)
         {
             GameManager.Instance.SwitchState(GameState.GameOver);
         }
