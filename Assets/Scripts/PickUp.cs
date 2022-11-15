@@ -15,6 +15,8 @@ namespace Beans2022.PickUps
 
         [SerializeField] private int _timeBonus;
         [SerializeField] private PickUpType _type;
+        [SerializeField] private PickUpEffect _effect;
+        private AudioManager audioManager;
         private float hoverSpeed = 15f;
         private Rigidbody _rigidbody;
         private float _yPositionStart;
@@ -25,36 +27,69 @@ namespace Beans2022.PickUps
         #endregion
 
         #region Private Functions
+
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _yPositionStart = _rigidbody.transform.position.y;
             upperBorder = _yPositionStart + 0.5f;
             lowerBorder = _yPositionStart - 0.5f;
+            audioManager = GameManager.Instance.GetComponent<AudioManager>();
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.name.Contains("Player"))
             {
-                PickUpEffect();
+                CountEffect();
+                StartCoroutine(nameof(PlayPickUpSFX));
                 Destroy(gameObject);
             }
         }
 
 
-        private void PickUpEffect()
+        private void CountEffect()
+        {
+            switch (_effect)
+            {
+                case PickUpEffect.Booster:
+                    GameManager.Instance.SleepTimer += _timeBonus;
+                    break;
+
+                case PickUpEffect.Downer:
+                    GameManager.Instance.SleepTimer -= _timeBonus;
+                    break;
+            }
+        }
+
+        private IEnumerator PlayPickUpSFX()
         {
             switch (_type)
             {
-                case PickUpType.Booster:
-                    GameManager.Instance.SleepTimer += _timeBonus;
-                    GameManager.Instance.GetComponent<AudioManager>().PlayPickUpBooster();
+                case PickUpType.Bier:
+                    audioManager.PlaySoundEffect(SFX.Drinking);
+                    yield return new WaitForSeconds(1f);
+                    audioManager.PlaySoundEffect(SFX.Burp);
                     break;
 
-                case PickUpType.Downer:
-                    GameManager.Instance.SleepTimer -= _timeBonus;
-                    GameManager.Instance.GetComponent<AudioManager>().PlayPickUpDowner();
+                case PickUpType.Kissen:
+                    audioManager.PlaySoundEffect(SFX.Moan2);
+                    break;
+
+                case PickUpType.Kaffee:
+                    audioManager.PlaySoundEffect(SFX.Drinking);
+                    break;
+
+                case PickUpType.ColaDose:
+                    audioManager.PlaySoundEffect(SFX.CanOpening);
+                    yield return new WaitForSeconds(1f);
+                    audioManager.PlaySoundEffect(SFX.Drinking);
+                    break;
+
+                case PickUpType.ColaFlasche:
+                    audioManager.PlaySoundEffect(SFX.BottleOpening);
+                    yield return new WaitForSeconds(1f);
+                    audioManager.PlaySoundEffect(SFX.Drinking);
                     break;
             }
         }

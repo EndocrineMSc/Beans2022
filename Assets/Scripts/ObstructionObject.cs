@@ -3,6 +3,7 @@ using Beans2022.Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumCollection;
 
 public class ObstructionObject : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class ObstructionObject : MonoBehaviour
         if (collision.gameObject.name.Contains("Player"))
         {
             StartCoroutine(GameManager.Instance.SlowDown());
-            GameManager.Instance.GetComponent<AudioManager>().PlayCollision();
             gameObject.GetComponent<Collider>().enabled = false;
+            GameManager.Instance.GetComponent<AudioManager>().PlaySoundEffect(SFX.Moan1);
         }
     }
 }

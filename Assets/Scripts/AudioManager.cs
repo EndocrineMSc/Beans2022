@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EnumCollection;
+using UnityEngine.Audio;
 
 namespace Beans2022.Audio
 {
@@ -17,8 +18,10 @@ namespace Beans2022.Audio
         [SerializeField] private AudioSource menuMusic;
         [SerializeField] private GameObject sfxObject;
         [SerializeField] private GameObject voiceLineObject;
-        private AudioSource[] sfx;
+        private AudioSource[] SoundEffects;
         private AudioSource[] randomVoiceLines;
+        
+        [SerializeField] private AudioMixer audioMixer;
 
         [SerializeField] private float _fadeSpeed = 0.5f;
         [SerializeField] private float _volumeIncrement = 0.05f;
@@ -34,7 +37,7 @@ namespace Beans2022.Audio
 
         #region Properties
 
-        private float _musicVolume = 0.3f;
+        [SerializeField] private float _musicVolume = 1f;
 
         public float Volume
         {
@@ -42,7 +45,7 @@ namespace Beans2022.Audio
             set { _musicVolume = value; }
         }
 
-        private float _sfxVolume = 0.3f;
+        [SerializeField] private float _sfxVolume = 1f;
 
         public float SFXVolume
         {
@@ -54,11 +57,36 @@ namespace Beans2022.Audio
 
         #region Public Functions
 
+        public void SetMasterVolume(float volume)
+        {
+            audioMixer.SetFloat("Master", volume);
+        }
+
+        public void SetEffectsVolume(float volume)
+        {
+            audioMixer.SetFloat("Effects", volume);
+            PlaySoundEffect(SFX.Burp);
+        }
+
+        public void SetMusicVolume(float volume)
+        {
+            audioMixer.SetFloat("Music", volume);
+        }
+
+
         public void PlayAudioClip(AudioClip audioClip)
         {
-            audioSourceSFX.volume = _sfxVolume;
-            audioSourceSFX.clip = audioClip;
-            audioSourceSFX.Play();
+            AudioSource audioSource = new();
+            audioSource.outputAudioMixerGroup = audioMixer.outputAudioMixerGroup;
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        }
+
+        public void PlaySoundEffect(SFX sfx)
+        {
+            AudioSource audioSource = SoundEffects[(int)sfx];
+            audioSource.volume = _sfxVolume;
+            audioSource.Play();
         }
 
         public void PlayMusic()
@@ -68,26 +96,25 @@ namespace Beans2022.Audio
 
         public void PlayJump()
         {
-            sfx[Random.Range(0,2)].Play();
-
+            SoundEffects[Random.Range(0,2)].Play();
         }
 
         public void PlayMenuClick()
         {
-            sfx[4].Play();
+            SoundEffects[4].Play();
         }
 
         public void PlayCollision()
         {
-            sfx[Random.Range(2, 4)].Play();
+            SoundEffects[Random.Range(2, 4)].Play();
         }
         public void PlayPickUpBooster()
         {
-            sfx[Random.Range(5, 9)].Play();
+            SoundEffects[Random.Range(5, 9)].Play();
         }
         public void PlayPickUpDowner()
         {
-            sfx[Random.Range(9, 12)].Play();
+            SoundEffects[Random.Range(9, 12)].Play();
         }
 
         #endregion
@@ -102,8 +129,7 @@ namespace Beans2022.Audio
 
             maxTimer = GameManager.Instance.SleepTimer;
             randomVoiceLines = voiceLineObject.GetComponents<AudioSource>();
-            sfx = sfxObject.GetComponents<AudioSource>();
-            bgMusicOne.Play();
+            SoundEffects = sfxObject.GetComponents<AudioSource>();
         }
 
         private void Update()
@@ -113,6 +139,10 @@ namespace Beans2022.Audio
             if (GameManager.Instance.State == GameState.MainMenu && !menuMusic.isPlaying)
             {
                 menuMusic.Play();
+            } 
+            else if (GameManager.Instance.State == GameState.MainMenu && menuMusic.isPlaying)
+            {
+                menuMusic.volume = _musicVolume;
             }
 
             if (GameManager.Instance.State == GameState.GameStarting)
