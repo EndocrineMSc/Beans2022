@@ -16,4 +16,12 @@ public class ObstructionObject : MonoBehaviour
             GameManager.Instance.GetComponent<AudioManager>().PlaySoundEffect(SFX.Moan1);
         }
     }
+
+    private void Update()
+    {
+        if(transform.position.x < -50f)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

@@ -26,6 +26,13 @@ namespace Beans2022.PickUps
 
         #endregion
 
+        #region Properties
+
+        public PickUpType Type
+        { get { return _type; } }
+
+        #endregion
+
         #region Private Functions
 
         private void Awake()
@@ -123,6 +130,11 @@ namespace Beans2022.PickUps
                     _rigidbody.AddForce(new Vector3(0,-hoverSpeed,0));
                 }
  
+            }
+
+            if (transform.position.x < -50f)
+            {
+                Destroy(gameObject);
             }
 
             

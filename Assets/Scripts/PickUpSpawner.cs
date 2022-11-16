@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using EnumCollection;
 
 public class PickUpSpawner : MonoBehaviour
 {
     #region Fields
 
-    [SerializeField] private GameObject boosterPickUp1;
-    [SerializeField] private GameObject boosterPickUp2;
-    [SerializeField] private GameObject boosterPickUp3;
-    [SerializeField] private GameObject boosterPickUp4;
-    [SerializeField] private GameObject boosterPickUp5;
+    [SerializeField] private GameObject PickUp1;
+    [SerializeField] private GameObject PickUp2;
+    [SerializeField] private GameObject PickUp3;
+    [SerializeField] private GameObject PickUp4;
+    [SerializeField] private GameObject PickUp5;
 
 
     private List<GameObject> PickUps = new List<GameObject>();
@@ -31,11 +32,11 @@ public class PickUpSpawner : MonoBehaviour
 
     private void Start()
     {
-        PickUps.Add(boosterPickUp1);
-        PickUps.Add(boosterPickUp2);
-        PickUps.Add(boosterPickUp3);
-        PickUps.Add(boosterPickUp4);
-        PickUps.Add(boosterPickUp5);
+        PickUps.Add(PickUp1);
+        PickUps.Add(PickUp2);
+        PickUps.Add(PickUp3);
+        PickUps.Add(PickUp4);
+        PickUps.Add(PickUp5);
     }
 
     private void Update()
@@ -47,11 +48,36 @@ public class PickUpSpawner : MonoBehaviour
 
         if (spawnReady)
         {
-            randomPickUpIndex = Random.Range(0, 4);
+            randomPickUpIndex = Random.Range(0, 6);
 
             GameObject temp = PickUps[randomPickUpIndex];
+            PickUp pickUp = temp.GetComponent<PickUp>();
+            float randomX = Random.Range(90, 110);
+            float randomY = Random.Range(1.3f, 5.5f);
 
-            Instantiate(temp, new Vector3(100, Random.Range(1.3f,5.5f), 0),Quaternion.Euler(-90,0,-180));
+
+            switch (pickUp.Type)
+            {
+                case PickUpType.Kaffee:
+                    Instantiate(temp, new Vector3(randomX, randomY, 0), Quaternion.Euler(0, 0, 0));
+                    break;
+
+                case PickUpType.Kissen:
+                    Instantiate(temp, new Vector3(randomX, randomY, 0), Quaternion.Euler(0, 0, 0));
+                    break;
+
+                case PickUpType.Bier:
+                    Instantiate(temp, new Vector3(randomX, randomY, 0), Quaternion.Euler(0, 50, 0));
+                    break;
+
+                case PickUpType.ColaDose:
+                    Instantiate(temp, new Vector3(randomX, randomY, 0), Quaternion.Euler(-90, 0, -180));
+                    break;
+
+                case PickUpType.ColaFlasche:
+                    Instantiate(temp, new Vector3(randomX, randomY, 0), Quaternion.Euler(-90, 0, -180));
+                    break;
+            }
 
             spawnCooldown = 0;
             spawnReady = false;
