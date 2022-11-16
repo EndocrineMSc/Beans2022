@@ -15,7 +15,7 @@ public class Background : MonoBehaviour
     private Vector3 _backgroundPosition = new Vector3();
 
     [SerializeField] private float xBoundary;
-    private float xSpawnPosition = 99.9f;
+    private float xSpawnPosition = 138.2f;
     private float xSpawnBoundary = -15;
     [SerializeField] private float ySpawnPosition;
     [SerializeField] private float zSpawnPosition;
