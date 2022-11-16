@@ -12,9 +12,9 @@ namespace Beans2022.Audio
         #region Fields
         private AudioSource audioSourceSFX;
         private AudioSource audioSourceMusic;
-        [SerializeField] private AudioSource bgMusicOne;
-        [SerializeField] private AudioSource bgMusicTwo;
-        [SerializeField] private AudioSource bgMusicThree;
+        public AudioSource bgMusicOne;
+        public AudioSource bgMusicTwo;
+        public AudioSource bgMusicThree;
         [SerializeField] private AudioSource menuMusic;
         [SerializeField] private GameObject sfxObject;
         [SerializeField] private GameObject voiceLineObject;
@@ -32,6 +32,8 @@ namespace Beans2022.Audio
 
         private bool waitForFadeOut;
         private bool waitForFadeIn;
+
+        private bool waitForMenuChange;
 
         #endregion
 
@@ -136,19 +138,20 @@ namespace Beans2022.Audio
         {
             sleepPercent = (GameManager.Instance.SleepTimer / maxTimer); //gives percentage loss of time
 
-            if (GameManager.Instance.State == GameState.MainMenu && !menuMusic.isPlaying)
+            if (GameManager.Instance.State == GameState.MainMenu)
             {
-                menuMusic.Play();
+                if (!waitForMenuChange)
+                {
+                    menuMusic.Play();
+                    StartCoroutine(nameof(FromPauseToMenu));
+                }
             } 
-            else if (GameManager.Instance.State == GameState.MainMenu && menuMusic.isPlaying)
-            {
-                menuMusic.volume = _musicVolume;
-            }
 
             if (GameManager.Instance.State == GameState.GameStarting)
             {
 
                 StartCoroutine(FadeOutTrack(menuMusic, 0));
+
                 if (sleepPercent > 0.7f)
                 {
                     if (bgMusicOne.volume < _musicVolume && !waitForFadeIn)
@@ -236,13 +239,24 @@ namespace Beans2022.Audio
         private IEnumerator RandomVoiceLineGenerator()
         {
             waiting = true;
-            float voiceLineWaitTime = Random.Range(5,10);
+            float voiceLineWaitTime = Random.Range(10,20);
             int voiceLineIndex = Random.Range(0, randomVoiceLines.Length);
 
             AudioSource voiceLine = randomVoiceLines[voiceLineIndex];
             voiceLine.Play();
             yield return new WaitForSeconds(voiceLineWaitTime);
             waiting = false;
+        }
+
+        private IEnumerator FromPauseToMenu()
+        {
+            waitForMenuChange = true;
+            yield return StartCoroutine(FadeOutTrack(bgMusicOne, 0));
+            yield return StartCoroutine(FadeOutTrack(bgMusicTwo, 0));
+            yield return StartCoroutine(FadeOutTrack(bgMusicThree, 0));
+            yield return StartCoroutine(FadeInTrack(menuMusic, 1));
+            waitForMenuChange = false;
+
         }
 
         #endregion

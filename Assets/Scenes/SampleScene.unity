@@ -594,6 +594,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: FritzDose
       objectReference: {fileID: 0}
+    - target: {fileID: 1153316974503052488, guid: 5e719b1e45f5eed439220b15ad4b2b66, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153316974503052488, guid: 5e719b1e45f5eed439220b15ad4b2b66, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153316974503052488, guid: 5e719b1e45f5eed439220b15ad4b2b66, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153316974503052488, guid: 5e719b1e45f5eed439220b15ad4b2b66, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e719b1e45f5eed439220b15ad4b2b66, type: 3}
 --- !u!223 &1184125214 stripped

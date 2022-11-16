@@ -48,9 +48,11 @@ namespace Beans2022.PickUps
         {
             if (collision.gameObject.name.Contains("Player"))
             {
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.GetComponent<Collider>().enabled = false;
                 CountEffect();
                 StartCoroutine(nameof(PlayPickUpSFX));
-                Destroy(gameObject);
+                
             }
         }
 
