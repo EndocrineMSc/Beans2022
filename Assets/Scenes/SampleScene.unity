@@ -1070,6 +1070,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4615563991103340318, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -785
+      objectReference: {fileID: 0}
     - target: {fileID: 4806525762383018501, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1266,6 +1270,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 8665120353665022234}
+    - target: {fileID: 7373541264447609301, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -785
+      objectReference: {fileID: 0}
     - target: {fileID: 8361012251506128240, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
       propertyPath: m_Value
       value: 0
@@ -1286,6 +1294,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Beans2022.Audio.AudioManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8361012251506128247, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -785
+      objectReference: {fileID: 0}
     - target: {fileID: 8361012251856492859, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1298,6 +1310,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8361012252684697071, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361012252684697071, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361012252684697071, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 8361012252755846486, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1309,6 +1333,10 @@ PrefabInstance:
     - target: {fileID: 8361012252755846486, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361012252883498037, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -785
       objectReference: {fileID: 0}
     - target: {fileID: 8361012252883498038, guid: 4634fdd68d0da6f42b7270c1e6046b92, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
