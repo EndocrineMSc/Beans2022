@@ -75,15 +75,6 @@ namespace Beans2022.Audio
             audioMixer.SetFloat("Music", volume);
         }
 
-
-        public void PlayAudioClip(AudioClip audioClip)
-        {
-            AudioSource audioSource = new();
-            audioSource.outputAudioMixerGroup = audioMixer.outputAudioMixerGroup;
-            audioSource.clip = audioClip;
-            audioSource.Play();
-        }
-
         public void PlaySoundEffect(SFX sfx)
         {
             AudioSource audioSource = SoundEffects[(int)sfx];

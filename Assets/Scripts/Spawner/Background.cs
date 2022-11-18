@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Background : MonoBehaviour
@@ -37,7 +38,7 @@ public class Background : MonoBehaviour
         if (_backgroundPosition.x <= xSpawnBoundary && !hasInstantiated)
         {
             randomBackground = Random.Range(1, 6);
-            Debug.Log("Random Background: " + randomBackground);
+            Debug.Log("Background Spawned");
             switch (randomBackground)
             {               
                 case 1:
@@ -69,5 +70,10 @@ public class Background : MonoBehaviour
             
             hasInstantiated = true;
         } 
+
+        if (_backgroundPosition.x <= xBoundary)
+        {
+            Destroy(gameObject);
+        }
     }
 }

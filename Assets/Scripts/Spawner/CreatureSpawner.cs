@@ -45,13 +45,15 @@ public class CreatureSpawner : MonoBehaviour
 
             GameObject temp = spawnList[randomEnemy];
 
+            Debug.Log("Creature Spawned.");
+
             if (temp.name.Contains("observer"))
             {
                 Instantiate(temp, new Vector3(100, 3, 0), Quaternion.Euler(-90, 0, 0));
             }
             else
             {
-                Instantiate(temp, new Vector3(100, 2.53f, 0), Quaternion.Euler(-90, 0, 0));
+                Instantiate(temp, new Vector3(100, 1.5f, 0), Quaternion.Euler(-90, 0, 0));
             }
 
             spawnCooldown = 0;
@@ -69,7 +71,6 @@ public class CreatureSpawner : MonoBehaviour
   
 
     #endregion
-
 
     #region IEnumerators
 

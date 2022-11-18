@@ -48,13 +48,14 @@ public class PickUpSpawner : MonoBehaviour
 
         if (spawnReady)
         {
-            randomPickUpIndex = Random.Range(0, 6);
+            randomPickUpIndex = Random.Range(0, 5);
 
             GameObject temp = PickUps[randomPickUpIndex];
             PickUp pickUp = temp.GetComponent<PickUp>();
             float randomX = Random.Range(90, 110);
             float randomY = Random.Range(1.3f, 5.5f);
 
+            Debug.Log("PickUp Spawned");
 
             switch (pickUp.Type)
             {

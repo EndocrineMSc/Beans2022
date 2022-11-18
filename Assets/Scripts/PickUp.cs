@@ -41,6 +41,10 @@ namespace Beans2022.PickUps
             _yPositionStart = _rigidbody.transform.position.y;
             upperBorder = _yPositionStart + 0.5f;
             lowerBorder = _yPositionStart - 0.5f;
+        }
+
+        private void Start()
+        {
             audioManager = GameManager.Instance.GetComponent<AudioManager>();
         }
 
@@ -48,12 +52,13 @@ namespace Beans2022.PickUps
         {
             if (collision.gameObject.name.Contains("Player"))
             {
-                gameObject.GetComponent<MeshRenderer>().enabled = false;
-                gameObject.GetComponent<Collider>().enabled = false;
-                CountEffect();
-                StartCoroutine(nameof(PlayPickUpSFX));
-                
+                CountEffect();                
             }
+
+            gameObject.GetComponent<Collider>().enabled = false;
+            gameObject.transform.SetPositionAndRotation(new Vector3 (0,-20,0), Quaternion.identity);
+
+            StartCoroutine(nameof(PlayPickUpSFX));
         }
 
 

@@ -52,6 +52,8 @@ public class Floor : MonoBehaviour
 
         if (_floorPosition.x <= xSpawnBoundary && !hasInstantiated)
         {
+            Debug.Log("Floor Spawned");
+
             switch (randomFloor)
             {
                 case 1:
