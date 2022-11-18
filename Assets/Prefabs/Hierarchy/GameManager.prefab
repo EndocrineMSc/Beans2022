@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 2332787535889162039}
   - component: {fileID: 8134037660205324314}
   - component: {fileID: 5250076249764276568}
-  - component: {fileID: 8665120353665022224}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -63,7 +62,7 @@ MonoBehaviour:
   _pauseMenu: {fileID: 0}
   _gameOver: {fileID: 0}
   _gameSpeed: -10
-  _sleepTimer: 300
+  _sleepTimer: 90
 --- !u!114 &2467150054109518223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,10 +103,13 @@ MonoBehaviour:
   bgMusicTwo: {fileID: 3598322541281995973}
   bgMusicThree: {fileID: 6216956559517122510}
   menuMusic: {fileID: 5250076249764276568}
-  sfxObject: {fileID: 404647627062254510, guid: 73044773679124347bb2beb72d9ebcc9, type: 3}
+  sfxObject: {fileID: 0}
   voiceLineObject: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
   _fadeSpeed: 0.1
   _volumeIncrement: 0.1
+  _musicVolume: 1
+  _sfxVolume: 1
 --- !u!114 &1531889119788801335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,11 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d3facef0d38e4b8356b3d23781a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boosterPickUp1: {fileID: 793086385903985949, guid: 5e719b1e45f5eed439220b15ad4b2b66, type: 3}
-  boosterPickUp2: {fileID: 1196165156630311472, guid: 9252c9b3d92617f4f915be6b68af66a2, type: 3}
-  boosterPickUp3: {fileID: 864038049990607431, guid: e96f262d44da3844c9034f789ef1360d, type: 3}
-  boosterPickUp4: {fileID: 1482834787919390262, guid: e9e2e4570e4630440a6d03064400e689, type: 3}
-  boosterPickUp5: {fileID: 0}
+  PickUp1: {fileID: 793086385903985949, guid: 5e719b1e45f5eed439220b15ad4b2b66, type: 3}
+  PickUp2: {fileID: 1196165156630311472, guid: 9252c9b3d92617f4f915be6b68af66a2, type: 3}
+  PickUp3: {fileID: 1482834787919390262, guid: e9e2e4570e4630440a6d03064400e689, type: 3}
+  PickUp4: {fileID: 8829926236853206469, guid: ef13435d10c39494c926caa3690ac8b4, type: 3}
+  PickUp5: {fileID: 864038049990607431, guid: e96f262d44da3844c9034f789ef1360d, type: 3}
   spawnCooldownStart: 10
 --- !u!82 &2455877538352669217
 AudioSource:
@@ -135,7 +137,7 @@ AudioSource:
   m_GameObject: {fileID: 140738543171468124}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
+  OutputAudioMixerGroup: {fileID: 444982675068922795, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
   m_audioClip: {fileID: 8300000, guid: 27c172176dedfb440b6d2ed795009105, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -231,7 +233,7 @@ AudioSource:
   m_GameObject: {fileID: 140738543171468124}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
+  OutputAudioMixerGroup: {fileID: 444982675068922795, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
   m_audioClip: {fileID: 8300000, guid: c70c9b6b8e644f24abd1a920491945bd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -327,7 +329,7 @@ AudioSource:
   m_GameObject: {fileID: 140738543171468124}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
+  OutputAudioMixerGroup: {fileID: 444982675068922795, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
   m_audioClip: {fileID: 8300000, guid: 57b9f38b7d6c58e41be725589b46ff8c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -487,12 +489,12 @@ AudioSource:
   m_GameObject: {fileID: 140738543171468124}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
+  OutputAudioMixerGroup: {fileID: 444982675068922795, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
   m_audioClip: {fileID: 8300000, guid: c67e7d15c899f73469999d5645836157, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -574,16 +576,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8665120353665022224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140738543171468124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 303b07b6596266a42ab9a4d8e1fedfea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 9bfe1b586394f3c4a8c9970e88aec046, type: 2}
