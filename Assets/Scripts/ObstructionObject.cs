@@ -9,11 +9,29 @@ public class ObstructionObject : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("Player"))
+        string collisionName = collision.gameObject.name;
+
+        if (collisionName.Contains("Player"))
         {
             StartCoroutine(GameManager.Instance.SlowDown());
             gameObject.GetComponent<Collider>().enabled = false;
             GameManager.Instance.GetComponent<AudioManager>().PlaySoundEffect(SFX.Moan1);
+        }
+        else if (collisionName.Contains("Slenderman"))
+        { 
+            Vector3 currentPosition = collision.gameObject.transform.position;
+
+            collision.gameObject.transform.position = new Vector3 (currentPosition.y, currentPosition.x + 5, currentPosition.z);
+        }
+        else if(collisionName.Contains("Plattform"))
+        {
+            //do nothing
+        }
+        else
+        {
+            Vector3 currentPosition = collision.gameObject.transform.position;
+
+            collision.gameObject.transform.position = new Vector3(currentPosition.y + 1, currentPosition.x, currentPosition.z);
         }
     }
 

@@ -44,6 +44,11 @@ public class PickUpSpawner : MonoBehaviour
         if (!cooldownActive)
         {
             StartCoroutine(nameof(TickUpCooldown));
+
+            if (spawnCooldownStart >= 4)
+            {
+                spawnCooldownStart--;
+            }
         }
 
         if (spawnReady)
