@@ -150,6 +150,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plattform
       objectReference: {fileID: 0}
+    - target: {fileID: 5195206165975714144, guid: deb1dd8895cff4149a554c3fbe96f515, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -15.34
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb1dd8895cff4149a554c3fbe96f515, type: 3}
 --- !u!4 &3186206776302197558 stripped
