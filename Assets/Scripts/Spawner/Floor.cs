@@ -57,15 +57,15 @@ public class Floor : MonoBehaviour
             switch (randomFloor)
             {
                 case 1:
-                    Instantiate(_floor1, new Vector3(xSpawnPosition, -14.8f, 0), Quaternion.identity);
+                    Instantiate(_floor1, new Vector3(xSpawnPosition, -15.3f, 0), Quaternion.identity);
                     break;
 
                 case 2:
-                    Instantiate(_floor2, new Vector3(xSpawnPosition, -15.3f, 0), Quaternion.identity);
+                    Instantiate(_floor2, new Vector3(xSpawnPosition, -15.8f, 0), Quaternion.identity);
                     break;
 
                 case 3:
-                    Instantiate(_floor3, new Vector3(xSpawnPosition, -15.3f, 0), Quaternion.identity);
+                    Instantiate(_floor3, new Vector3(xSpawnPosition, -15.8f, 0), Quaternion.identity);
                     break;
             }
 

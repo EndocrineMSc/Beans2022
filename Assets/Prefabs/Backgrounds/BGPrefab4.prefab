@@ -105,7 +105,7 @@ MonoBehaviour:
   _background4: {fileID: 2912933254621539907}
   _background5: {fileID: 1080750304766577759, guid: c9abf4b9efea0c0418798242b91b623b, type: 3}
   xBoundary: -50
-  ySpawnPosition: -3
+  ySpawnPosition: -3.5
   zSpawnPosition: 10.4
 --- !u!54 &6430282441925850532
 Rigidbody:

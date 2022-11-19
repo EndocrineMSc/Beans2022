@@ -52025,7 +52025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91889acdd299fe140a58a539f2da6621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _floor1: {fileID: 3046379493611652804, guid: deb1dd8895cff4149a554c3fbe96f515, type: 3}
+  _floor1: {fileID: 4851156176652899290, guid: deb1dd8895cff4149a554c3fbe96f515, type: 3}
   _floor2: {fileID: 5466235935364799036, guid: 8c94427f2fbcb14418fff46df6350942, type: 3}
   _floor3: {fileID: 6527760065475998233}
   xBoundary: -80
