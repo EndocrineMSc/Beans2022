@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3760682895508639986}
   - component: {fileID: 755517641}
   - component: {fileID: 1531889119788801335}
+  - component: {fileID: 6711659453883126611}
   - component: {fileID: 2455877538352669217}
   - component: {fileID: 3598322541281995973}
   - component: {fileID: 6216956559517122510}
@@ -129,6 +130,19 @@ MonoBehaviour:
   PickUp4: {fileID: 8829926236853206469, guid: ef13435d10c39494c926caa3690ac8b4, type: 3}
   PickUp5: {fileID: 864038049990607431, guid: e96f262d44da3844c9034f789ef1360d, type: 3}
   spawnCooldownStart: 10
+--- !u!114 &6711659453883126611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140738543171468124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1885fd5673fda3488feae13ff438e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floatingPlatform: {fileID: 0}
 --- !u!82 &2455877538352669217
 AudioSource:
   m_ObjectHideFlags: 0
